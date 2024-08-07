@@ -24,7 +24,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace = "com.example.mobile_app"
+    namespace = "com.attraxia.chat_app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -35,13 +35,28 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.mobile_app"
+        applicationId "com.attraxia.chat_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+    production {
+        dimension "default"
+        resValue "string", "app_name", "Chat App"
+    }
+
+    development {
+        dimension "default"
+        resValue "string", "app_name", "Chat App Dev"
+        applicationIdSuffix ".dev"
+    }
     }
 
     buildTypes {
