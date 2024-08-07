@@ -21,3 +21,5 @@ This pull request includes the following changes:
 | 01                                    | 02                                    | 03                                    | 04                                    |
 | ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
 | <img src="" width="100" height="250"> | <img src="" width="100" height="250"> | <img src="" width="100" height="250"> | <img src="" width="100" height="250"> |
+
+## How to test 🚦
