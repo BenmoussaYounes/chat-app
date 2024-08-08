@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app/features/chat/ui/chat_screen.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_app/features/chat/logic/bloc/chat_bloc.dart';
+
+import '../../features/chat/ui/chat_screen.dart';
+
 import 'routes.dart';
 
 class AppRouter {
@@ -7,7 +12,11 @@ class AppRouter {
     switch (settings.name) {
       case Routes.chatScreen:
         return MaterialPageRoute(
-          builder: (_) => const ChatScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                ChatBloc()..add(const ChatEvent.getConversations()),
+            child: const ChatScreen(),
+          ),
         );
 
       default:

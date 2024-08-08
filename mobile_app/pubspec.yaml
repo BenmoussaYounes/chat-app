@@ -27,6 +27,7 @@ environment:
 # dependencies can be manually updated by changing the version numbers below to
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
+# ! dart run build_runner build --delete-conflicting-outputs
 dependencies:
   flutter:
     sdk: flutter
@@ -36,11 +37,17 @@ dependencies:
   cupertino_icons: ^1.0.6
   # A Flutter package to use fonts from fonts.google.com.
   google_fonts: ^6.2.1
+  # A package for creating badges. Badges can be used for an additional marker for any widget, e.g. show a number of items in a shopping cart.
+  badges: ^3.1.2
   # State management
   flutter_bloc: ^8.1.6
+  # To specify how we handle bloc events
+  bloc_concurrency: ^0.2.5
   # Code generator (mainly used with cubit & retrofit)
   freezed: ^2.4.5
   freezed_annotation: ^2.4.4
+  # Contains code to deal with internationalized/localized messages, date and number formatting and parsing, bi-directional text, and other internationalization issues.
+  intl: ^0.19.0
   # For dependency injection
   get_it: ^7.7.0
   # Classes and helper functions that support JSON code generation via the `json_serializable` package.
