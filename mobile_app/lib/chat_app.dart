@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_app/core/theming/colors_manager.dart';
 
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
@@ -17,6 +18,8 @@ class ChatApp extends StatelessWidget {
         child: MaterialApp(
           title: 'Chat App',
           theme: ThemeData(
+            colorScheme:
+                ColorScheme.fromSeed(seedColor: ColorsManager.mainBlue),
             scaffoldBackgroundColor: Colors.white,
             textTheme: GoogleFonts.poppinsTextTheme(),
           ),
