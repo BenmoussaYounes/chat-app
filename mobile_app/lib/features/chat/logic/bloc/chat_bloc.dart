@@ -1,6 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:mobile_app/core/helpers/extensions.dart';
+import 'package:mobile_app/core/routing/routes.dart';
 
 import '../../data/models/conversation_model.dart';
 
@@ -23,24 +26,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     Emitter<ChatState> emit,
   ) async {
     await Future.delayed(const Duration(seconds: 2));
-    emit(Loaded([
-      ConversationModel(
-        id: '1',
-        name: 'John Doe',
-        lastMessage: 'Hello, how are you?',
-        lastMessageTime: DateTime.now(),
-        unSeenMessagesCount: 2,
-        isLastMessageSeen: false,
-      ),
-      ConversationModel(
-        id: '2',
-        name: 'Jane Doe',
-        lastMessage: 'Hi, I am fine',
-        lastMessageTime: DateTime.now(),
-        unSeenMessagesCount: 0,
-        isLastMessageSeen: true,
-      ),
-    ]));
+    emit(const Loaded([]));
   }
 
   void _changeSelectedPageIndex(
@@ -53,18 +39,34 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       ConversationModel(
         id: '1',
         name: 'John Doe',
-        lastMessage: 'Hello, how are you?',
-        lastMessageTime: DateTime.now(),
         unSeenMessagesCount: 2,
-        isLastMessageSeen: false,
+        lastMessage: LastMessageModel(
+          message: 'Hey',
+          sentTime: DateTime.now(),
+        ),
       ),
       ConversationModel(
         id: '2',
         name: 'Jane Doe',
-        lastMessage: 'Hi, I am fine',
-        lastMessageTime: DateTime.now(),
         unSeenMessagesCount: 0,
-        isLastMessageSeen: true,
+        lastMessage: LastMessageModel(
+          message: 'Hi, I am fine',
+          sentTime: DateTime.now(),
+        ),
+      ),
+      ConversationModel(
+        id: '1',
+        name: 'John Doe',
+        unSeenMessagesCount: 1,
+        lastMessage: LastMessageModel(
+          message: 'Hey',
+          sentTime: DateTime.now(),
+        ),
+      ),
+      ConversationModel(
+        id: '2',
+        name: 'Jane Doe',
+        unSeenMessagesCount: 0,
       ),
     ]));
   }
@@ -73,7 +75,10 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     _OpenConversation event,
     Emitter<ChatState> emit,
   ) {
-    // Open conversation logic
+    event.context.pushNamed(Routes.conversationScreen, arguments: {
+      'conversationId': event.conversationId,
+      'userName': event.userName,
+    });
   }
 
   void _startNewConversation(

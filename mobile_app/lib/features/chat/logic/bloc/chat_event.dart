@@ -6,7 +6,8 @@ class ChatEvent with _$ChatEvent {
   const factory ChatEvent.changeSelectedPage(int pageIndex) =
       _ChangeSelectedPage;
 
-  const factory ChatEvent.openConversation(String conversationId) =
+  const factory ChatEvent.openConversation(
+          BuildContext context, String conversationId, String userName) =
       _OpenConversation;
   const factory ChatEvent.startNewConversation() = _StartNewConversation;
 }

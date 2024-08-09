@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile_app/features/chat/ui/widgets/app_navigation_bar.dart';
+import 'package:mobile_app/features/chat/ui/widgets/empty_chat_list.dart';
 
 import '../logic/bloc/chat_bloc.dart';
 import 'widgets/chat_list_tile.dart';
@@ -20,12 +21,14 @@ class ChatScreen extends StatelessWidget {
             return state.maybeWhen(
               changeSelectedPageIndex: (_) =>
                   const Center(child: CircularProgressIndicator()),
-              loaded: (conversations) => ListView.builder(
-                itemCount: conversations.length,
-                itemBuilder: (context, index) => ChatListTile(
-                  conversation: conversations[index],
-                ),
-              ),
+              loaded: (conversations) => conversations.isNotEmpty
+                  ? ListView.builder(
+                      itemCount: conversations.length,
+                      itemBuilder: (context, index) => ChatListTile(
+                        conversation: conversations[index],
+                      ),
+                    )
+                  : const EmptyChatList(),
               error: (message) => Center(child: Text(message)),
               orElse: () => const Center(child: CircularProgressIndicator()),
             );

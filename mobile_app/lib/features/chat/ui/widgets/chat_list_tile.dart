@@ -17,6 +17,7 @@ class ChatListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMessageSeen = conversation.unSeenMessagesCount == 0 ? true : false;
     return ListTile(
       shape: Border(
         bottom: BorderSide(
@@ -24,11 +25,12 @@ class ChatListTile extends StatelessWidget {
           width: 0.5.w,
         ),
       ),
-      tileColor: conversation.isLastMessageSeen
+      tileColor: isMessageSeen
           ? Colors.white
-          : ColorsManager.mainBlue.withOpacity(0.15),
+          : ColorsManager.mainGray.withOpacity(0.2),
       onTap: () => context.read<ChatBloc>().add(
-            ChatEvent.openConversation(conversation.id),
+            ChatEvent.openConversation(
+                context, conversation.id, conversation.name),
           ),
       leading: conversation.unSeenMessagesCount > 0
           ? badges.Badge(
@@ -43,25 +45,21 @@ class ChatListTile extends StatelessWidget {
       title: Text(
         conversation.name,
         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-              fontWeight: conversation.isLastMessageSeen
-                  ? FontWeight.normal
-                  : FontWeight.bold,
+              fontWeight: isMessageSeen ? FontWeight.normal : FontWeight.bold,
             ),
       ),
       subtitle: Text(
-        conversation.lastMessage,
+        conversation.lastMessage?.message ?? 'No messages yet',
         style: Theme.of(context).textTheme.bodySmall!.copyWith(
-              fontWeight: conversation.isLastMessageSeen
-                  ? FontWeight.normal
-                  : FontWeight.bold,
+              fontWeight: isMessageSeen ? FontWeight.normal : FontWeight.bold,
             ),
       ),
       trailing: Text(
-        DateFormat('hh:mm a').format(conversation.lastMessageTime),
+        conversation.lastMessage == null
+            ? ''
+            : DateFormat('hh:mm a').format(conversation.lastMessage!.sentTime),
         style: Theme.of(context).textTheme.bodySmall!.copyWith(
-              fontWeight: conversation.isLastMessageSeen
-                  ? FontWeight.normal
-                  : FontWeight.bold,
+              fontWeight: isMessageSeen ? FontWeight.normal : FontWeight.bold,
             ),
       ),
     );

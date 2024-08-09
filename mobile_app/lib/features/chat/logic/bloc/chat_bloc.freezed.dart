@@ -20,7 +20,9 @@ mixin _$ChatEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getConversations,
     required TResult Function(int pageIndex) changeSelectedPage,
-    required TResult Function(String conversationId) openConversation,
+    required TResult Function(
+            BuildContext context, String conversationId, String userName)
+        openConversation,
     required TResult Function() startNewConversation,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +30,9 @@ mixin _$ChatEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getConversations,
     TResult? Function(int pageIndex)? changeSelectedPage,
-    TResult? Function(String conversationId)? openConversation,
+    TResult? Function(
+            BuildContext context, String conversationId, String userName)?
+        openConversation,
     TResult? Function()? startNewConversation,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +40,9 @@ mixin _$ChatEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getConversations,
     TResult Function(int pageIndex)? changeSelectedPage,
-    TResult Function(String conversationId)? openConversation,
+    TResult Function(
+            BuildContext context, String conversationId, String userName)?
+        openConversation,
     TResult Function()? startNewConversation,
     required TResult orElse(),
   }) =>
@@ -125,7 +131,9 @@ class _$GetConversationsImpl implements _GetConversations {
   TResult when<TResult extends Object?>({
     required TResult Function() getConversations,
     required TResult Function(int pageIndex) changeSelectedPage,
-    required TResult Function(String conversationId) openConversation,
+    required TResult Function(
+            BuildContext context, String conversationId, String userName)
+        openConversation,
     required TResult Function() startNewConversation,
   }) {
     return getConversations();
@@ -136,7 +144,9 @@ class _$GetConversationsImpl implements _GetConversations {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getConversations,
     TResult? Function(int pageIndex)? changeSelectedPage,
-    TResult? Function(String conversationId)? openConversation,
+    TResult? Function(
+            BuildContext context, String conversationId, String userName)?
+        openConversation,
     TResult? Function()? startNewConversation,
   }) {
     return getConversations?.call();
@@ -147,7 +157,9 @@ class _$GetConversationsImpl implements _GetConversations {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getConversations,
     TResult Function(int pageIndex)? changeSelectedPage,
-    TResult Function(String conversationId)? openConversation,
+    TResult Function(
+            BuildContext context, String conversationId, String userName)?
+        openConversation,
     TResult Function()? startNewConversation,
     required TResult orElse(),
   }) {
@@ -267,7 +279,9 @@ class _$ChangeSelectedPageImpl implements _ChangeSelectedPage {
   TResult when<TResult extends Object?>({
     required TResult Function() getConversations,
     required TResult Function(int pageIndex) changeSelectedPage,
-    required TResult Function(String conversationId) openConversation,
+    required TResult Function(
+            BuildContext context, String conversationId, String userName)
+        openConversation,
     required TResult Function() startNewConversation,
   }) {
     return changeSelectedPage(pageIndex);
@@ -278,7 +292,9 @@ class _$ChangeSelectedPageImpl implements _ChangeSelectedPage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getConversations,
     TResult? Function(int pageIndex)? changeSelectedPage,
-    TResult? Function(String conversationId)? openConversation,
+    TResult? Function(
+            BuildContext context, String conversationId, String userName)?
+        openConversation,
     TResult? Function()? startNewConversation,
   }) {
     return changeSelectedPage?.call(pageIndex);
@@ -289,7 +305,9 @@ class _$ChangeSelectedPageImpl implements _ChangeSelectedPage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getConversations,
     TResult Function(int pageIndex)? changeSelectedPage,
-    TResult Function(String conversationId)? openConversation,
+    TResult Function(
+            BuildContext context, String conversationId, String userName)?
+        openConversation,
     TResult Function()? startNewConversation,
     required TResult orElse(),
   }) {
@@ -353,7 +371,7 @@ abstract class _$$OpenConversationImplCopyWith<$Res> {
           $Res Function(_$OpenConversationImpl) then) =
       __$$OpenConversationImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String conversationId});
+  $Res call({BuildContext context, String conversationId, String userName});
 }
 
 /// @nodoc
@@ -367,12 +385,22 @@ class __$$OpenConversationImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? context = null,
     Object? conversationId = null,
+    Object? userName = null,
   }) {
     return _then(_$OpenConversationImpl(
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
       null == conversationId
           ? _value.conversationId
           : conversationId // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -381,14 +409,19 @@ class __$$OpenConversationImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OpenConversationImpl implements _OpenConversation {
-  const _$OpenConversationImpl(this.conversationId);
+  const _$OpenConversationImpl(
+      this.context, this.conversationId, this.userName);
 
   @override
+  final BuildContext context;
+  @override
   final String conversationId;
+  @override
+  final String userName;
 
   @override
   String toString() {
-    return 'ChatEvent.openConversation(conversationId: $conversationId)';
+    return 'ChatEvent.openConversation(context: $context, conversationId: $conversationId, userName: $userName)';
   }
 
   @override
@@ -396,12 +429,16 @@ class _$OpenConversationImpl implements _OpenConversation {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OpenConversationImpl &&
+            (identical(other.context, context) || other.context == context) &&
             (identical(other.conversationId, conversationId) ||
-                other.conversationId == conversationId));
+                other.conversationId == conversationId) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, conversationId);
+  int get hashCode =>
+      Object.hash(runtimeType, context, conversationId, userName);
 
   @JsonKey(ignore: true)
   @override
@@ -415,10 +452,12 @@ class _$OpenConversationImpl implements _OpenConversation {
   TResult when<TResult extends Object?>({
     required TResult Function() getConversations,
     required TResult Function(int pageIndex) changeSelectedPage,
-    required TResult Function(String conversationId) openConversation,
+    required TResult Function(
+            BuildContext context, String conversationId, String userName)
+        openConversation,
     required TResult Function() startNewConversation,
   }) {
-    return openConversation(conversationId);
+    return openConversation(context, conversationId, userName);
   }
 
   @override
@@ -426,10 +465,12 @@ class _$OpenConversationImpl implements _OpenConversation {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getConversations,
     TResult? Function(int pageIndex)? changeSelectedPage,
-    TResult? Function(String conversationId)? openConversation,
+    TResult? Function(
+            BuildContext context, String conversationId, String userName)?
+        openConversation,
     TResult? Function()? startNewConversation,
   }) {
-    return openConversation?.call(conversationId);
+    return openConversation?.call(context, conversationId, userName);
   }
 
   @override
@@ -437,12 +478,14 @@ class _$OpenConversationImpl implements _OpenConversation {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getConversations,
     TResult Function(int pageIndex)? changeSelectedPage,
-    TResult Function(String conversationId)? openConversation,
+    TResult Function(
+            BuildContext context, String conversationId, String userName)?
+        openConversation,
     TResult Function()? startNewConversation,
     required TResult orElse(),
   }) {
     if (openConversation != null) {
-      return openConversation(conversationId);
+      return openConversation(context, conversationId, userName);
     }
     return orElse();
   }
@@ -486,10 +529,14 @@ class _$OpenConversationImpl implements _OpenConversation {
 }
 
 abstract class _OpenConversation implements ChatEvent {
-  const factory _OpenConversation(final String conversationId) =
-      _$OpenConversationImpl;
+  const factory _OpenConversation(
+      final BuildContext context,
+      final String conversationId,
+      final String userName) = _$OpenConversationImpl;
 
+  BuildContext get context;
   String get conversationId;
+  String get userName;
   @JsonKey(ignore: true)
   _$$OpenConversationImplCopyWith<_$OpenConversationImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -536,7 +583,9 @@ class _$StartNewConversationImpl implements _StartNewConversation {
   TResult when<TResult extends Object?>({
     required TResult Function() getConversations,
     required TResult Function(int pageIndex) changeSelectedPage,
-    required TResult Function(String conversationId) openConversation,
+    required TResult Function(
+            BuildContext context, String conversationId, String userName)
+        openConversation,
     required TResult Function() startNewConversation,
   }) {
     return startNewConversation();
@@ -547,7 +596,9 @@ class _$StartNewConversationImpl implements _StartNewConversation {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getConversations,
     TResult? Function(int pageIndex)? changeSelectedPage,
-    TResult? Function(String conversationId)? openConversation,
+    TResult? Function(
+            BuildContext context, String conversationId, String userName)?
+        openConversation,
     TResult? Function()? startNewConversation,
   }) {
     return startNewConversation?.call();
@@ -558,7 +609,9 @@ class _$StartNewConversationImpl implements _StartNewConversation {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getConversations,
     TResult Function(int pageIndex)? changeSelectedPage,
-    TResult Function(String conversationId)? openConversation,
+    TResult Function(
+            BuildContext context, String conversationId, String userName)?
+        openConversation,
     TResult Function()? startNewConversation,
     required TResult orElse(),
   }) {
