@@ -16,8 +16,10 @@ class AppNavigationBar extends StatelessWidget {
         NavigationDestination(icon: Icon(Icons.person), label: 'Younes'),
         NavigationDestination(icon: Icon(Icons.person_4_rounded), label: 'Ali'),
       ],
-      onDestinationSelected: (pageIndex) =>
-          context.read<ChatBloc>().add(ChatEvent.changeSelectedPage(pageIndex)),
+      onDestinationSelected: (pageIndex) {
+        if (pageIndex == selectedIndex) return;
+        context.read<ChatBloc>().add(ChatEvent.changeSelectedPage(pageIndex));
+      },
     );
   }
 }

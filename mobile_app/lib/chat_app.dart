@@ -18,8 +18,9 @@ class ChatApp extends StatelessWidget {
         child: MaterialApp(
           title: 'Chat App',
           theme: ThemeData(
-            colorScheme:
-                ColorScheme.fromSeed(seedColor: ColorsManager.mainBlue),
+            colorScheme: ColorScheme.fromSeed(
+                seedColor: ColorsManager.mainGray,
+                dynamicSchemeVariant: DynamicSchemeVariant.fidelity),
             scaffoldBackgroundColor: Colors.white,
             textTheme: GoogleFonts.poppinsTextTheme(),
           ),

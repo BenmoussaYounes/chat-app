@@ -1,17 +1,23 @@
 class ConversationModel {
   final String id;
   final String name;
-  final String lastMessage;
-  final DateTime lastMessageTime;
-  final bool isLastMessageSeen;
   final int unSeenMessagesCount;
+  final LastMessageModel? lastMessage;
 
   ConversationModel({
     required this.id,
     required this.name,
-    required this.lastMessage,
-    required this.lastMessageTime,
-    required this.isLastMessageSeen,
     required this.unSeenMessagesCount,
+    this.lastMessage,
+  });
+}
+
+class LastMessageModel {
+  final String message;
+  final DateTime sentTime;
+
+  LastMessageModel({
+    required this.message,
+    required this.sentTime,
   });
 }
