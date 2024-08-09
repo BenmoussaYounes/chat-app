@@ -63,6 +63,8 @@ dependencies:
   flutter_screenutil: ^5.9.3
   # Flutter plugin for Firebase Core, enabling connecting to multiple Firebase apps
   firebase_core: 2.31.1
+  # Flutter plugin for Cloud Firestore, a cloud-hosted, noSQL database with live synchronization and offline support on Android and iOS.
+  cloud_firestore: 4.17.4
   # Easy way to add shimmer effect
   shimmer: ^3.0.0
 
