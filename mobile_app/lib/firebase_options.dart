@@ -54,7 +54,8 @@ class DefaultFirebaseOptions {
     appId: '1:216741808857:android:61ad1f0db025167fcc8cc8',
     messagingSenderId: '216741808857',
     projectId: 'chat-app-75b20',
-    databaseURL: 'https://chat-app-75b20-default-rtdb.europe-west1.firebasedatabase.app',
+    databaseURL:
+        'https://chat-app-75b20-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'chat-app-75b20.appspot.com',
   );
 
@@ -63,7 +64,8 @@ class DefaultFirebaseOptions {
     appId: '1:216741808857:ios:d727c3a731a80bfdcc8cc8',
     messagingSenderId: '216741808857',
     projectId: 'chat-app-75b20',
-    databaseURL: 'https://chat-app-75b20-default-rtdb.europe-west1.firebasedatabase.app',
+    databaseURL:
+        'https://chat-app-75b20-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'chat-app-75b20.appspot.com',
     iosBundleId: 'com.attraxia.chatapp',
   );
