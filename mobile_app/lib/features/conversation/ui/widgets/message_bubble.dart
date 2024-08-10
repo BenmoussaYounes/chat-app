@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:mobile_app/core/helpers/spacing.dart';
 import 'package:mobile_app/core/theming/colors_manager.dart';
+import 'package:mobile_app/core/widgets/seen_status_icon.dart';
 
 import 'package:mobile_app/features/conversation/data/models/message_bubble_model.dart';
 
@@ -49,6 +51,10 @@ class MessageBubble extends StatelessWidget {
               crossAxisAlignment: WrapCrossAlignment.end,
               alignment: WrapAlignment.end,
               children: [
+                if (messageBubble.haveSeenStatus) ...[
+                  SeenStatusIcon(isSeen: messageBubble.isMessageSeen),
+                  horizontalSpace(8),
+                ],
                 Text(messageBubble.message,
                     textAlign: TextAlign.start,
                     style: Theme.of(context).textTheme.bodyLarge!.copyWith(
@@ -58,7 +64,7 @@ class MessageBubble extends StatelessWidget {
                         fontWeight: FontWeight.w500)),
                 horizontalSpace(8),
                 Text(
-                  messageBubble.messageTime,
+                  DateFormat('hh:mm a').format(messageBubble.messageTime),
                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       fontSize: 8.sp,
                       color: messageBubble.isMe

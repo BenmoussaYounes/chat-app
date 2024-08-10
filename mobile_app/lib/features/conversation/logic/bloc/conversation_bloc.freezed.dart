@@ -18,20 +18,27 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ConversationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String conversationId) getMessages,
+    required TResult Function(String conversationId, User selectedUser)
+        getMessages,
     required TResult Function() sendMessage,
+    required TResult Function(List<MessageBubbleModel> messagesBubbles)
+        messagesReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String conversationId)? getMessages,
+    TResult? Function(String conversationId, User selectedUser)? getMessages,
     TResult? Function()? sendMessage,
+    TResult? Function(List<MessageBubbleModel> messagesBubbles)?
+        messagesReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String conversationId)? getMessages,
+    TResult Function(String conversationId, User selectedUser)? getMessages,
     TResult Function()? sendMessage,
+    TResult Function(List<MessageBubbleModel> messagesBubbles)?
+        messagesReceived,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +46,21 @@ mixin _$ConversationEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetMessages value) getMessages,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_MessageReceived value) messagesReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetMessages value)? getMessages,
     TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_MessageReceived value)? messagesReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetMessages value)? getMessages,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_MessageReceived value)? messagesReceived,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -80,7 +90,7 @@ abstract class _$$GetMessagesImplCopyWith<$Res> {
           _$GetMessagesImpl value, $Res Function(_$GetMessagesImpl) then) =
       __$$GetMessagesImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String conversationId});
+  $Res call({String conversationId, User selectedUser});
 }
 
 /// @nodoc
@@ -95,12 +105,17 @@ class __$$GetMessagesImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? conversationId = null,
+    Object? selectedUser = null,
   }) {
     return _then(_$GetMessagesImpl(
       null == conversationId
           ? _value.conversationId
           : conversationId // ignore: cast_nullable_to_non_nullable
               as String,
+      null == selectedUser
+          ? _value.selectedUser
+          : selectedUser // ignore: cast_nullable_to_non_nullable
+              as User,
     ));
   }
 }
@@ -108,14 +123,16 @@ class __$$GetMessagesImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetMessagesImpl implements _GetMessages {
-  const _$GetMessagesImpl(this.conversationId);
+  const _$GetMessagesImpl(this.conversationId, this.selectedUser);
 
   @override
   final String conversationId;
+  @override
+  final User selectedUser;
 
   @override
   String toString() {
-    return 'ConversationEvent.getMessages(conversationId: $conversationId)';
+    return 'ConversationEvent.getMessages(conversationId: $conversationId, selectedUser: $selectedUser)';
   }
 
   @override
@@ -124,11 +141,13 @@ class _$GetMessagesImpl implements _GetMessages {
         (other.runtimeType == runtimeType &&
             other is _$GetMessagesImpl &&
             (identical(other.conversationId, conversationId) ||
-                other.conversationId == conversationId));
+                other.conversationId == conversationId) &&
+            (identical(other.selectedUser, selectedUser) ||
+                other.selectedUser == selectedUser));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, conversationId);
+  int get hashCode => Object.hash(runtimeType, conversationId, selectedUser);
 
   @JsonKey(ignore: true)
   @override
@@ -139,30 +158,37 @@ class _$GetMessagesImpl implements _GetMessages {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String conversationId) getMessages,
+    required TResult Function(String conversationId, User selectedUser)
+        getMessages,
     required TResult Function() sendMessage,
+    required TResult Function(List<MessageBubbleModel> messagesBubbles)
+        messagesReceived,
   }) {
-    return getMessages(conversationId);
+    return getMessages(conversationId, selectedUser);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String conversationId)? getMessages,
+    TResult? Function(String conversationId, User selectedUser)? getMessages,
     TResult? Function()? sendMessage,
+    TResult? Function(List<MessageBubbleModel> messagesBubbles)?
+        messagesReceived,
   }) {
-    return getMessages?.call(conversationId);
+    return getMessages?.call(conversationId, selectedUser);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String conversationId)? getMessages,
+    TResult Function(String conversationId, User selectedUser)? getMessages,
     TResult Function()? sendMessage,
+    TResult Function(List<MessageBubbleModel> messagesBubbles)?
+        messagesReceived,
     required TResult orElse(),
   }) {
     if (getMessages != null) {
-      return getMessages(conversationId);
+      return getMessages(conversationId, selectedUser);
     }
     return orElse();
   }
@@ -172,6 +198,7 @@ class _$GetMessagesImpl implements _GetMessages {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetMessages value) getMessages,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_MessageReceived value) messagesReceived,
   }) {
     return getMessages(this);
   }
@@ -181,6 +208,7 @@ class _$GetMessagesImpl implements _GetMessages {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetMessages value)? getMessages,
     TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_MessageReceived value)? messagesReceived,
   }) {
     return getMessages?.call(this);
   }
@@ -190,6 +218,7 @@ class _$GetMessagesImpl implements _GetMessages {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetMessages value)? getMessages,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_MessageReceived value)? messagesReceived,
     required TResult orElse(),
   }) {
     if (getMessages != null) {
@@ -200,9 +229,11 @@ class _$GetMessagesImpl implements _GetMessages {
 }
 
 abstract class _GetMessages implements ConversationEvent {
-  const factory _GetMessages(final String conversationId) = _$GetMessagesImpl;
+  const factory _GetMessages(
+      final String conversationId, final User selectedUser) = _$GetMessagesImpl;
 
   String get conversationId;
+  User get selectedUser;
   @JsonKey(ignore: true)
   _$$GetMessagesImplCopyWith<_$GetMessagesImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -246,8 +277,11 @@ class _$SendMessageImpl implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String conversationId) getMessages,
+    required TResult Function(String conversationId, User selectedUser)
+        getMessages,
     required TResult Function() sendMessage,
+    required TResult Function(List<MessageBubbleModel> messagesBubbles)
+        messagesReceived,
   }) {
     return sendMessage();
   }
@@ -255,8 +289,10 @@ class _$SendMessageImpl implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String conversationId)? getMessages,
+    TResult? Function(String conversationId, User selectedUser)? getMessages,
     TResult? Function()? sendMessage,
+    TResult? Function(List<MessageBubbleModel> messagesBubbles)?
+        messagesReceived,
   }) {
     return sendMessage?.call();
   }
@@ -264,8 +300,10 @@ class _$SendMessageImpl implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String conversationId)? getMessages,
+    TResult Function(String conversationId, User selectedUser)? getMessages,
     TResult Function()? sendMessage,
+    TResult Function(List<MessageBubbleModel> messagesBubbles)?
+        messagesReceived,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -279,6 +317,7 @@ class _$SendMessageImpl implements _SendMessage {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetMessages value) getMessages,
     required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_MessageReceived value) messagesReceived,
   }) {
     return sendMessage(this);
   }
@@ -288,6 +327,7 @@ class _$SendMessageImpl implements _SendMessage {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetMessages value)? getMessages,
     TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_MessageReceived value)? messagesReceived,
   }) {
     return sendMessage?.call(this);
   }
@@ -297,6 +337,7 @@ class _$SendMessageImpl implements _SendMessage {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetMessages value)? getMessages,
     TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_MessageReceived value)? messagesReceived,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -308,6 +349,159 @@ class _$SendMessageImpl implements _SendMessage {
 
 abstract class _SendMessage implements ConversationEvent {
   const factory _SendMessage() = _$SendMessageImpl;
+}
+
+/// @nodoc
+abstract class _$$MessageReceivedImplCopyWith<$Res> {
+  factory _$$MessageReceivedImplCopyWith(_$MessageReceivedImpl value,
+          $Res Function(_$MessageReceivedImpl) then) =
+      __$$MessageReceivedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<MessageBubbleModel> messagesBubbles});
+}
+
+/// @nodoc
+class __$$MessageReceivedImplCopyWithImpl<$Res>
+    extends _$ConversationEventCopyWithImpl<$Res, _$MessageReceivedImpl>
+    implements _$$MessageReceivedImplCopyWith<$Res> {
+  __$$MessageReceivedImplCopyWithImpl(
+      _$MessageReceivedImpl _value, $Res Function(_$MessageReceivedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? messagesBubbles = null,
+  }) {
+    return _then(_$MessageReceivedImpl(
+      null == messagesBubbles
+          ? _value._messagesBubbles
+          : messagesBubbles // ignore: cast_nullable_to_non_nullable
+              as List<MessageBubbleModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MessageReceivedImpl implements _MessageReceived {
+  const _$MessageReceivedImpl(final List<MessageBubbleModel> messagesBubbles)
+      : _messagesBubbles = messagesBubbles;
+
+  final List<MessageBubbleModel> _messagesBubbles;
+  @override
+  List<MessageBubbleModel> get messagesBubbles {
+    if (_messagesBubbles is EqualUnmodifiableListView) return _messagesBubbles;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_messagesBubbles);
+  }
+
+  @override
+  String toString() {
+    return 'ConversationEvent.messagesReceived(messagesBubbles: $messagesBubbles)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MessageReceivedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._messagesBubbles, _messagesBubbles));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_messagesBubbles));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MessageReceivedImplCopyWith<_$MessageReceivedImpl> get copyWith =>
+      __$$MessageReceivedImplCopyWithImpl<_$MessageReceivedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String conversationId, User selectedUser)
+        getMessages,
+    required TResult Function() sendMessage,
+    required TResult Function(List<MessageBubbleModel> messagesBubbles)
+        messagesReceived,
+  }) {
+    return messagesReceived(messagesBubbles);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String conversationId, User selectedUser)? getMessages,
+    TResult? Function()? sendMessage,
+    TResult? Function(List<MessageBubbleModel> messagesBubbles)?
+        messagesReceived,
+  }) {
+    return messagesReceived?.call(messagesBubbles);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String conversationId, User selectedUser)? getMessages,
+    TResult Function()? sendMessage,
+    TResult Function(List<MessageBubbleModel> messagesBubbles)?
+        messagesReceived,
+    required TResult orElse(),
+  }) {
+    if (messagesReceived != null) {
+      return messagesReceived(messagesBubbles);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetMessages value) getMessages,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_MessageReceived value) messagesReceived,
+  }) {
+    return messagesReceived(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetMessages value)? getMessages,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_MessageReceived value)? messagesReceived,
+  }) {
+    return messagesReceived?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetMessages value)? getMessages,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_MessageReceived value)? messagesReceived,
+    required TResult orElse(),
+  }) {
+    if (messagesReceived != null) {
+      return messagesReceived(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MessageReceived implements ConversationEvent {
+  const factory _MessageReceived(
+      final List<MessageBubbleModel> messagesBubbles) = _$MessageReceivedImpl;
+
+  List<MessageBubbleModel> get messagesBubbles;
+  @JsonKey(ignore: true)
+  _$$MessageReceivedImplCopyWith<_$MessageReceivedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

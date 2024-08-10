@@ -25,7 +25,7 @@ class ChatScreen extends StatelessWidget {
                   ? ListView.builder(
                       itemCount: conversations.length,
                       itemBuilder: (context, index) => ChatListTile(
-                        conversation: conversations[index],
+                        chatTile: conversations[index],
                       ),
                     )
                   : const EmptyChatList(),

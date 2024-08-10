@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_app/core/di/dependency_injection.dart';
+import 'package:mobile_app/core/enums/user_enums.dart';
 import 'package:mobile_app/features/chat/logic/bloc/chat_bloc.dart';
 import 'package:mobile_app/features/conversation/ui/conversation_screen.dart';
 
@@ -31,9 +32,10 @@ class AppRouter {
         final String userName = args['userName'];
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => ConversationBloc()
-              ..add(ConversationEvent.getMessages(conversationId)),
-            child: ConversationScreen(userName: userName),
+            create: (context) => getIt<ConversationBloc>()
+              ..add(ConversationEvent.getMessages(
+                  conversationId, User.fromString(userName))),
+            child: ConversationScreen(user: User.fromString(userName)),
           ),
         );
 

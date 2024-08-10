@@ -10,6 +10,8 @@ import 'package:mobile_app/core/helpers/extensions.dart';
 import 'package:mobile_app/core/networking/firebase_constants.dart';
 import 'package:mobile_app/core/routing/routes.dart';
 
+import 'package:mobile_app/features/chat/domain/entities/conversation_entity.dart';
+
 import '../../data/models/conversation_model.dart';
 import '../../data/repositories/chat_repository.dart';
 
@@ -20,9 +22,6 @@ part 'chat_bloc.freezed.dart';
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   final ChatRepository _chatRepository;
 
-  final Stream<QuerySnapshot> _chatStream = FirebaseFirestore.instance
-      .collection(FirebaseConstants.chatCollection)
-      .snapshots();
   StreamSubscription<QuerySnapshot>? chatSubscription;
   User selectedUser = User.younes;
 
@@ -40,21 +39,46 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     _OnNewMessagesReceived event,
     Emitter<ChatState> emit,
   ) async {
-    emit(Loaded(event.conversations));
+    List<ChatListTileEntity> chatListTileEntities = [];
+    for (ConversationModel conversation in event.conversations) {
+      final response = await _chatRepository.getLastMessage(conversation.id);
+      response.when(
+        success: (lastMessage) {
+          return chatListTileEntities.add(ChatListTileEntity(
+            conversation: conversation,
+            lastMessage: lastMessage,
+          ));
+        },
+        failure: (error) => print('Error getting last message: $error'),
+      );
+    }
+    chatListTileEntities.sort((a, b) {
+      final aTime = a.lastMessage?.messageTime ?? a.conversation.createdAt;
+      final bTime = b.lastMessage?.messageTime ?? b.conversation.createdAt;
+      return bTime.compareTo(aTime); // sort by last message time
+    });
+
+    emit(Loaded(chatListTileEntities));
   }
 
   Future<void> _getConversations(
     _GetConversations event,
     Emitter<ChatState> emit,
   ) async {
-    chatSubscription = _chatStream.listen(
+    final Stream<QuerySnapshot> chatStream = FirebaseFirestore.instance
+        .collectionGroup(FirebaseConstants.chatCollection)
+        .orderBy('createAt', descending: true)
+        .snapshots(includeMetadataChanges: true);
+
+    chatSubscription = chatStream.listen(
       (event) {
-        final conversations = event.docs
-            .map((conversation) => ConversationModel.fromJson({
-                  ...conversation.data() as Map<String, dynamic>,
-                  'id': conversation.id,
-                }, selectedUser))
-            .toList();
+        final List<ConversationModel> conversations =
+            event.docs.map((conversation) {
+          return ConversationModel.fromJson({
+            ...conversation.data() as Map<String, dynamic>,
+            'id': conversation.id,
+          }, selectedUser);
+        }).toList();
         add(ChatEvent.onNewMessagesReceived(conversations));
       },
     );
@@ -68,7 +92,6 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     switch (event.pageIndex) {
       case 0:
         selectedUser = User.younes;
-
       case 1:
         selectedUser = User.ali;
     }
