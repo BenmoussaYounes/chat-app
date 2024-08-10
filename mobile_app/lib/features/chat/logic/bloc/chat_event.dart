@@ -10,4 +10,7 @@ class ChatEvent with _$ChatEvent {
           BuildContext context, String conversationId, String userName) =
       _OpenConversation;
   const factory ChatEvent.startNewConversation() = _StartNewConversation;
+
+  const factory ChatEvent.onNewMessagesReceived(
+      List<ConversationModel> conversations) = _OnNewMessagesReceived;
 }
