@@ -891,7 +891,7 @@ mixin _$ChatState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<ConversationModel> conversations) loaded,
+    required TResult Function(List<ChatListTileEntity> conversations) loaded,
     required TResult Function(String message) error,
     required TResult Function(int selectedPageIndex) changeSelectedPageIndex,
   }) =>
@@ -899,7 +899,7 @@ mixin _$ChatState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<ConversationModel> conversations)? loaded,
+    TResult? Function(List<ChatListTileEntity> conversations)? loaded,
     TResult? Function(String message)? error,
     TResult? Function(int selectedPageIndex)? changeSelectedPageIndex,
   }) =>
@@ -907,7 +907,7 @@ mixin _$ChatState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<ConversationModel> conversations)? loaded,
+    TResult Function(List<ChatListTileEntity> conversations)? loaded,
     TResult Function(String message)? error,
     TResult Function(int selectedPageIndex)? changeSelectedPageIndex,
     required TResult orElse(),
@@ -997,7 +997,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<ConversationModel> conversations) loaded,
+    required TResult Function(List<ChatListTileEntity> conversations) loaded,
     required TResult Function(String message) error,
     required TResult Function(int selectedPageIndex) changeSelectedPageIndex,
   }) {
@@ -1008,7 +1008,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<ConversationModel> conversations)? loaded,
+    TResult? Function(List<ChatListTileEntity> conversations)? loaded,
     TResult? Function(String message)? error,
     TResult? Function(int selectedPageIndex)? changeSelectedPageIndex,
   }) {
@@ -1019,7 +1019,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<ConversationModel> conversations)? loaded,
+    TResult Function(List<ChatListTileEntity> conversations)? loaded,
     TResult Function(String message)? error,
     TResult Function(int selectedPageIndex)? changeSelectedPageIndex,
     required TResult orElse(),
@@ -1079,7 +1079,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<ConversationModel> conversations});
+  $Res call({List<ChatListTileEntity> conversations});
 }
 
 /// @nodoc
@@ -1099,7 +1099,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
       null == conversations
           ? _value._conversations
           : conversations // ignore: cast_nullable_to_non_nullable
-              as List<ConversationModel>,
+              as List<ChatListTileEntity>,
     ));
   }
 }
@@ -1107,12 +1107,12 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements Loaded {
-  const _$LoadedImpl(final List<ConversationModel> conversations)
+  const _$LoadedImpl(final List<ChatListTileEntity> conversations)
       : _conversations = conversations;
 
-  final List<ConversationModel> _conversations;
+  final List<ChatListTileEntity> _conversations;
   @override
-  List<ConversationModel> get conversations {
+  List<ChatListTileEntity> get conversations {
     if (_conversations is EqualUnmodifiableListView) return _conversations;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_conversations);
@@ -1146,7 +1146,7 @@ class _$LoadedImpl implements Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<ConversationModel> conversations) loaded,
+    required TResult Function(List<ChatListTileEntity> conversations) loaded,
     required TResult Function(String message) error,
     required TResult Function(int selectedPageIndex) changeSelectedPageIndex,
   }) {
@@ -1157,7 +1157,7 @@ class _$LoadedImpl implements Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<ConversationModel> conversations)? loaded,
+    TResult? Function(List<ChatListTileEntity> conversations)? loaded,
     TResult? Function(String message)? error,
     TResult? Function(int selectedPageIndex)? changeSelectedPageIndex,
   }) {
@@ -1168,7 +1168,7 @@ class _$LoadedImpl implements Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<ConversationModel> conversations)? loaded,
+    TResult Function(List<ChatListTileEntity> conversations)? loaded,
     TResult Function(String message)? error,
     TResult Function(int selectedPageIndex)? changeSelectedPageIndex,
     required TResult orElse(),
@@ -1219,10 +1219,10 @@ class _$LoadedImpl implements Loaded {
 }
 
 abstract class Loaded implements ChatState {
-  const factory Loaded(final List<ConversationModel> conversations) =
+  const factory Loaded(final List<ChatListTileEntity> conversations) =
       _$LoadedImpl;
 
-  List<ConversationModel> get conversations;
+  List<ChatListTileEntity> get conversations;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1293,7 +1293,7 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<ConversationModel> conversations) loaded,
+    required TResult Function(List<ChatListTileEntity> conversations) loaded,
     required TResult Function(String message) error,
     required TResult Function(int selectedPageIndex) changeSelectedPageIndex,
   }) {
@@ -1304,7 +1304,7 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<ConversationModel> conversations)? loaded,
+    TResult? Function(List<ChatListTileEntity> conversations)? loaded,
     TResult? Function(String message)? error,
     TResult? Function(int selectedPageIndex)? changeSelectedPageIndex,
   }) {
@@ -1315,7 +1315,7 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<ConversationModel> conversations)? loaded,
+    TResult Function(List<ChatListTileEntity> conversations)? loaded,
     TResult Function(String message)? error,
     TResult Function(int selectedPageIndex)? changeSelectedPageIndex,
     required TResult orElse(),
@@ -1443,7 +1443,7 @@ class _$ChangeSelectedPageIndexImpl implements ChangeSelectedPageIndex {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<ConversationModel> conversations) loaded,
+    required TResult Function(List<ChatListTileEntity> conversations) loaded,
     required TResult Function(String message) error,
     required TResult Function(int selectedPageIndex) changeSelectedPageIndex,
   }) {
@@ -1454,7 +1454,7 @@ class _$ChangeSelectedPageIndexImpl implements ChangeSelectedPageIndex {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<ConversationModel> conversations)? loaded,
+    TResult? Function(List<ChatListTileEntity> conversations)? loaded,
     TResult? Function(String message)? error,
     TResult? Function(int selectedPageIndex)? changeSelectedPageIndex,
   }) {
@@ -1465,7 +1465,7 @@ class _$ChangeSelectedPageIndexImpl implements ChangeSelectedPageIndex {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<ConversationModel> conversations)? loaded,
+    TResult Function(List<ChatListTileEntity> conversations)? loaded,
     TResult Function(String message)? error,
     TResult Function(int selectedPageIndex)? changeSelectedPageIndex,
     required TResult orElse(),

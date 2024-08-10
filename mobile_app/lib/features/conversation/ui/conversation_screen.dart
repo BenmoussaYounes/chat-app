@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mobile_app/core/enums/user_enums.dart';
 
 import 'package:mobile_app/core/widgets/page_loading_indicator.dart';
 import 'package:mobile_app/features/conversation/ui/widgets/empty_conversation_list.dart';
@@ -11,9 +12,9 @@ import '../logic/bloc/conversation_bloc.dart';
 import 'widgets/send_new_message_input_field.dart';
 
 class ConversationScreen extends StatefulWidget {
-  const ConversationScreen({super.key, required this.userName});
+  const ConversationScreen({super.key, required this.user});
 
-  final String userName;
+  final User user;
 
   @override
   State<ConversationScreen> createState() => _ConversationScreenState();
@@ -34,7 +35,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          widget.userName,
+          widget.user.value,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         centerTitle: true,

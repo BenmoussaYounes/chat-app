@@ -1,16 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../../../core/enums/user_enums.dart';
 
 class ConversationModel {
   final String id;
   final String name;
+  final DateTime createdAt;
   final int unSeenMessagesCount;
-  final LastMessageModel? lastMessage;
 
   ConversationModel({
     required this.id,
     required this.name,
+    required this.createdAt,
     required this.unSeenMessagesCount,
-    this.lastMessage,
   });
 
   factory ConversationModel.fromJson(
@@ -30,27 +32,10 @@ class ConversationModel {
     return ConversationModel(
       id: json['id'],
       name: name,
+      createdAt: json['createAt'] == null // to solve serverTimestamp() bug
+          ? DateTime.now()
+          : (json['createAt'] as Timestamp).toDate(),
       unSeenMessagesCount: unSeenMessagesCount,
-      lastMessage: json['lastMessage'] == null
-          ? null
-          : LastMessageModel.fromJson(json['lastMessage']),
-    );
-  }
-}
-
-class LastMessageModel {
-  final String message;
-  final DateTime sentTime;
-
-  LastMessageModel({
-    required this.message,
-    required this.sentTime,
-  });
-
-  factory LastMessageModel.fromJson(Map<String, dynamic> json) {
-    return LastMessageModel(
-      message: json['message'],
-      sentTime: DateTime.parse(json['sentTime']),
     );
   }
 }
