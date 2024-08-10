@@ -24,6 +24,8 @@ mixin _$ChatEvent {
             BuildContext context, String conversationId, String userName)
         openConversation,
     required TResult Function() startNewConversation,
+    required TResult Function(List<ConversationModel> conversations)
+        onNewMessagesReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +36,8 @@ mixin _$ChatEvent {
             BuildContext context, String conversationId, String userName)?
         openConversation,
     TResult? Function()? startNewConversation,
+    TResult? Function(List<ConversationModel> conversations)?
+        onNewMessagesReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +48,8 @@ mixin _$ChatEvent {
             BuildContext context, String conversationId, String userName)?
         openConversation,
     TResult Function()? startNewConversation,
+    TResult Function(List<ConversationModel> conversations)?
+        onNewMessagesReceived,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -53,6 +59,8 @@ mixin _$ChatEvent {
     required TResult Function(_ChangeSelectedPage value) changeSelectedPage,
     required TResult Function(_OpenConversation value) openConversation,
     required TResult Function(_StartNewConversation value) startNewConversation,
+    required TResult Function(_OnNewMessagesReceived value)
+        onNewMessagesReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +69,7 @@ mixin _$ChatEvent {
     TResult? Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult? Function(_OpenConversation value)? openConversation,
     TResult? Function(_StartNewConversation value)? startNewConversation,
+    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +78,7 @@ mixin _$ChatEvent {
     TResult Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult Function(_OpenConversation value)? openConversation,
     TResult Function(_StartNewConversation value)? startNewConversation,
+    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,6 +145,8 @@ class _$GetConversationsImpl implements _GetConversations {
             BuildContext context, String conversationId, String userName)
         openConversation,
     required TResult Function() startNewConversation,
+    required TResult Function(List<ConversationModel> conversations)
+        onNewMessagesReceived,
   }) {
     return getConversations();
   }
@@ -148,6 +160,8 @@ class _$GetConversationsImpl implements _GetConversations {
             BuildContext context, String conversationId, String userName)?
         openConversation,
     TResult? Function()? startNewConversation,
+    TResult? Function(List<ConversationModel> conversations)?
+        onNewMessagesReceived,
   }) {
     return getConversations?.call();
   }
@@ -161,6 +175,8 @@ class _$GetConversationsImpl implements _GetConversations {
             BuildContext context, String conversationId, String userName)?
         openConversation,
     TResult Function()? startNewConversation,
+    TResult Function(List<ConversationModel> conversations)?
+        onNewMessagesReceived,
     required TResult orElse(),
   }) {
     if (getConversations != null) {
@@ -176,6 +192,8 @@ class _$GetConversationsImpl implements _GetConversations {
     required TResult Function(_ChangeSelectedPage value) changeSelectedPage,
     required TResult Function(_OpenConversation value) openConversation,
     required TResult Function(_StartNewConversation value) startNewConversation,
+    required TResult Function(_OnNewMessagesReceived value)
+        onNewMessagesReceived,
   }) {
     return getConversations(this);
   }
@@ -187,6 +205,7 @@ class _$GetConversationsImpl implements _GetConversations {
     TResult? Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult? Function(_OpenConversation value)? openConversation,
     TResult? Function(_StartNewConversation value)? startNewConversation,
+    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
   }) {
     return getConversations?.call(this);
   }
@@ -198,6 +217,7 @@ class _$GetConversationsImpl implements _GetConversations {
     TResult Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult Function(_OpenConversation value)? openConversation,
     TResult Function(_StartNewConversation value)? startNewConversation,
+    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     required TResult orElse(),
   }) {
     if (getConversations != null) {
@@ -283,6 +303,8 @@ class _$ChangeSelectedPageImpl implements _ChangeSelectedPage {
             BuildContext context, String conversationId, String userName)
         openConversation,
     required TResult Function() startNewConversation,
+    required TResult Function(List<ConversationModel> conversations)
+        onNewMessagesReceived,
   }) {
     return changeSelectedPage(pageIndex);
   }
@@ -296,6 +318,8 @@ class _$ChangeSelectedPageImpl implements _ChangeSelectedPage {
             BuildContext context, String conversationId, String userName)?
         openConversation,
     TResult? Function()? startNewConversation,
+    TResult? Function(List<ConversationModel> conversations)?
+        onNewMessagesReceived,
   }) {
     return changeSelectedPage?.call(pageIndex);
   }
@@ -309,6 +333,8 @@ class _$ChangeSelectedPageImpl implements _ChangeSelectedPage {
             BuildContext context, String conversationId, String userName)?
         openConversation,
     TResult Function()? startNewConversation,
+    TResult Function(List<ConversationModel> conversations)?
+        onNewMessagesReceived,
     required TResult orElse(),
   }) {
     if (changeSelectedPage != null) {
@@ -324,6 +350,8 @@ class _$ChangeSelectedPageImpl implements _ChangeSelectedPage {
     required TResult Function(_ChangeSelectedPage value) changeSelectedPage,
     required TResult Function(_OpenConversation value) openConversation,
     required TResult Function(_StartNewConversation value) startNewConversation,
+    required TResult Function(_OnNewMessagesReceived value)
+        onNewMessagesReceived,
   }) {
     return changeSelectedPage(this);
   }
@@ -335,6 +363,7 @@ class _$ChangeSelectedPageImpl implements _ChangeSelectedPage {
     TResult? Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult? Function(_OpenConversation value)? openConversation,
     TResult? Function(_StartNewConversation value)? startNewConversation,
+    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
   }) {
     return changeSelectedPage?.call(this);
   }
@@ -346,6 +375,7 @@ class _$ChangeSelectedPageImpl implements _ChangeSelectedPage {
     TResult Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult Function(_OpenConversation value)? openConversation,
     TResult Function(_StartNewConversation value)? startNewConversation,
+    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     required TResult orElse(),
   }) {
     if (changeSelectedPage != null) {
@@ -456,6 +486,8 @@ class _$OpenConversationImpl implements _OpenConversation {
             BuildContext context, String conversationId, String userName)
         openConversation,
     required TResult Function() startNewConversation,
+    required TResult Function(List<ConversationModel> conversations)
+        onNewMessagesReceived,
   }) {
     return openConversation(context, conversationId, userName);
   }
@@ -469,6 +501,8 @@ class _$OpenConversationImpl implements _OpenConversation {
             BuildContext context, String conversationId, String userName)?
         openConversation,
     TResult? Function()? startNewConversation,
+    TResult? Function(List<ConversationModel> conversations)?
+        onNewMessagesReceived,
   }) {
     return openConversation?.call(context, conversationId, userName);
   }
@@ -482,6 +516,8 @@ class _$OpenConversationImpl implements _OpenConversation {
             BuildContext context, String conversationId, String userName)?
         openConversation,
     TResult Function()? startNewConversation,
+    TResult Function(List<ConversationModel> conversations)?
+        onNewMessagesReceived,
     required TResult orElse(),
   }) {
     if (openConversation != null) {
@@ -497,6 +533,8 @@ class _$OpenConversationImpl implements _OpenConversation {
     required TResult Function(_ChangeSelectedPage value) changeSelectedPage,
     required TResult Function(_OpenConversation value) openConversation,
     required TResult Function(_StartNewConversation value) startNewConversation,
+    required TResult Function(_OnNewMessagesReceived value)
+        onNewMessagesReceived,
   }) {
     return openConversation(this);
   }
@@ -508,6 +546,7 @@ class _$OpenConversationImpl implements _OpenConversation {
     TResult? Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult? Function(_OpenConversation value)? openConversation,
     TResult? Function(_StartNewConversation value)? startNewConversation,
+    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
   }) {
     return openConversation?.call(this);
   }
@@ -519,6 +558,7 @@ class _$OpenConversationImpl implements _OpenConversation {
     TResult Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult Function(_OpenConversation value)? openConversation,
     TResult Function(_StartNewConversation value)? startNewConversation,
+    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     required TResult orElse(),
   }) {
     if (openConversation != null) {
@@ -587,6 +627,8 @@ class _$StartNewConversationImpl implements _StartNewConversation {
             BuildContext context, String conversationId, String userName)
         openConversation,
     required TResult Function() startNewConversation,
+    required TResult Function(List<ConversationModel> conversations)
+        onNewMessagesReceived,
   }) {
     return startNewConversation();
   }
@@ -600,6 +642,8 @@ class _$StartNewConversationImpl implements _StartNewConversation {
             BuildContext context, String conversationId, String userName)?
         openConversation,
     TResult? Function()? startNewConversation,
+    TResult? Function(List<ConversationModel> conversations)?
+        onNewMessagesReceived,
   }) {
     return startNewConversation?.call();
   }
@@ -613,6 +657,8 @@ class _$StartNewConversationImpl implements _StartNewConversation {
             BuildContext context, String conversationId, String userName)?
         openConversation,
     TResult Function()? startNewConversation,
+    TResult Function(List<ConversationModel> conversations)?
+        onNewMessagesReceived,
     required TResult orElse(),
   }) {
     if (startNewConversation != null) {
@@ -628,6 +674,8 @@ class _$StartNewConversationImpl implements _StartNewConversation {
     required TResult Function(_ChangeSelectedPage value) changeSelectedPage,
     required TResult Function(_OpenConversation value) openConversation,
     required TResult Function(_StartNewConversation value) startNewConversation,
+    required TResult Function(_OnNewMessagesReceived value)
+        onNewMessagesReceived,
   }) {
     return startNewConversation(this);
   }
@@ -639,6 +687,7 @@ class _$StartNewConversationImpl implements _StartNewConversation {
     TResult? Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult? Function(_OpenConversation value)? openConversation,
     TResult? Function(_StartNewConversation value)? startNewConversation,
+    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
   }) {
     return startNewConversation?.call(this);
   }
@@ -650,6 +699,7 @@ class _$StartNewConversationImpl implements _StartNewConversation {
     TResult Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult Function(_OpenConversation value)? openConversation,
     TResult Function(_StartNewConversation value)? startNewConversation,
+    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     required TResult orElse(),
   }) {
     if (startNewConversation != null) {
@@ -661,6 +711,179 @@ class _$StartNewConversationImpl implements _StartNewConversation {
 
 abstract class _StartNewConversation implements ChatEvent {
   const factory _StartNewConversation() = _$StartNewConversationImpl;
+}
+
+/// @nodoc
+abstract class _$$OnNewMessagesReceivedImplCopyWith<$Res> {
+  factory _$$OnNewMessagesReceivedImplCopyWith(
+          _$OnNewMessagesReceivedImpl value,
+          $Res Function(_$OnNewMessagesReceivedImpl) then) =
+      __$$OnNewMessagesReceivedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<ConversationModel> conversations});
+}
+
+/// @nodoc
+class __$$OnNewMessagesReceivedImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$OnNewMessagesReceivedImpl>
+    implements _$$OnNewMessagesReceivedImplCopyWith<$Res> {
+  __$$OnNewMessagesReceivedImplCopyWithImpl(_$OnNewMessagesReceivedImpl _value,
+      $Res Function(_$OnNewMessagesReceivedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? conversations = null,
+  }) {
+    return _then(_$OnNewMessagesReceivedImpl(
+      null == conversations
+          ? _value._conversations
+          : conversations // ignore: cast_nullable_to_non_nullable
+              as List<ConversationModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnNewMessagesReceivedImpl implements _OnNewMessagesReceived {
+  const _$OnNewMessagesReceivedImpl(final List<ConversationModel> conversations)
+      : _conversations = conversations;
+
+  final List<ConversationModel> _conversations;
+  @override
+  List<ConversationModel> get conversations {
+    if (_conversations is EqualUnmodifiableListView) return _conversations;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_conversations);
+  }
+
+  @override
+  String toString() {
+    return 'ChatEvent.onNewMessagesReceived(conversations: $conversations)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnNewMessagesReceivedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._conversations, _conversations));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_conversations));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnNewMessagesReceivedImplCopyWith<_$OnNewMessagesReceivedImpl>
+      get copyWith => __$$OnNewMessagesReceivedImplCopyWithImpl<
+          _$OnNewMessagesReceivedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getConversations,
+    required TResult Function(int pageIndex) changeSelectedPage,
+    required TResult Function(
+            BuildContext context, String conversationId, String userName)
+        openConversation,
+    required TResult Function() startNewConversation,
+    required TResult Function(List<ConversationModel> conversations)
+        onNewMessagesReceived,
+  }) {
+    return onNewMessagesReceived(conversations);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getConversations,
+    TResult? Function(int pageIndex)? changeSelectedPage,
+    TResult? Function(
+            BuildContext context, String conversationId, String userName)?
+        openConversation,
+    TResult? Function()? startNewConversation,
+    TResult? Function(List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+  }) {
+    return onNewMessagesReceived?.call(conversations);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getConversations,
+    TResult Function(int pageIndex)? changeSelectedPage,
+    TResult Function(
+            BuildContext context, String conversationId, String userName)?
+        openConversation,
+    TResult Function()? startNewConversation,
+    TResult Function(List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    required TResult orElse(),
+  }) {
+    if (onNewMessagesReceived != null) {
+      return onNewMessagesReceived(conversations);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetConversations value) getConversations,
+    required TResult Function(_ChangeSelectedPage value) changeSelectedPage,
+    required TResult Function(_OpenConversation value) openConversation,
+    required TResult Function(_StartNewConversation value) startNewConversation,
+    required TResult Function(_OnNewMessagesReceived value)
+        onNewMessagesReceived,
+  }) {
+    return onNewMessagesReceived(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetConversations value)? getConversations,
+    TResult? Function(_ChangeSelectedPage value)? changeSelectedPage,
+    TResult? Function(_OpenConversation value)? openConversation,
+    TResult? Function(_StartNewConversation value)? startNewConversation,
+    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+  }) {
+    return onNewMessagesReceived?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetConversations value)? getConversations,
+    TResult Function(_ChangeSelectedPage value)? changeSelectedPage,
+    TResult Function(_OpenConversation value)? openConversation,
+    TResult Function(_StartNewConversation value)? startNewConversation,
+    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    required TResult orElse(),
+  }) {
+    if (onNewMessagesReceived != null) {
+      return onNewMessagesReceived(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnNewMessagesReceived implements ChatEvent {
+  const factory _OnNewMessagesReceived(
+          final List<ConversationModel> conversations) =
+      _$OnNewMessagesReceivedImpl;
+
+  List<ConversationModel> get conversations;
+  @JsonKey(ignore: true)
+  _$$OnNewMessagesReceivedImplCopyWith<_$OnNewMessagesReceivedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
