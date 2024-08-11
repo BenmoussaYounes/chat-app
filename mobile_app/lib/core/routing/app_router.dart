@@ -19,7 +19,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) =>
-                getIt<ChatBloc>()..add(const ChatEvent.getConversations()),
+                getIt<ChatBloc>()..add(ChatEvent.getConversations(context)),
             child: const ChatScreen(),
           ),
         );

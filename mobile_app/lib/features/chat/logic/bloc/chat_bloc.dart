@@ -7,6 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobile_app/core/enums/user_enums.dart';
 import 'package:mobile_app/core/helpers/extensions.dart';
+import 'package:mobile_app/core/networking/api_error_handler.dart';
+import 'package:mobile_app/core/networking/api_error_model.dart';
+import 'package:mobile_app/core/networking/api_response_snackbar.dart';
+import 'package:mobile_app/core/networking/api_result.dart';
 import 'package:mobile_app/core/networking/firebase_constants.dart';
 import 'package:mobile_app/core/routing/routes.dart';
 
@@ -26,13 +30,16 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   User selectedUser = User.younes;
 
   ChatBloc(this._chatRepository) : super(const _Initial()) {
-    on<_GetConversations>(_getConversations);
-    on<_OnNewMessagesReceived>(_onNewMessagesReceived);
-    on<_ChangeSelectedPage>(_changeSelectedPageIndex,
+    on<_GetConversations>(_getConversations, transformer: restartable());
+    on<_OnNewMessagesReceived>(_onNewMessagesReceived,
         transformer:
             restartable()); // prevent multiple events from being processed at the same time
+    on<_ChangeSelectedPage>(_changeSelectedPageIndex);
     on<_OpenConversation>(_openConversation);
-    on<_StartNewConversation>(_startNewConversation);
+    on<_StartNewConversation>(_startNewConversation,
+        transformer: restartable());
+    on<_RefreshConversations>(_onRefreshConversations);
+    on<_SendErrorEvent>(_sendErrorEvent);
   }
 
   Future<void> _onNewMessagesReceived(
@@ -49,7 +56,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
             lastMessage: lastMessage,
           ));
         },
-        failure: (error) => print('Error getting last message: $error'),
+        failure: (error) => Error(error),
       );
     }
     chatListTileEntities.sort((a, b) {
@@ -71,17 +78,32 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         .snapshots(includeMetadataChanges: true);
 
     chatSubscription = chatStream.listen(
-      (event) {
-        final List<ConversationModel> conversations =
-            event.docs.map((conversation) {
-          return ConversationModel.fromJson({
-            ...conversation.data() as Map<String, dynamic>,
-            'id': conversation.id,
-          }, selectedUser);
-        }).toList();
-        add(ChatEvent.onNewMessagesReceived(conversations));
+      (subscriptionEvent) async {
+        final ApiResult response =
+            await _chatRepository.parseSubscriptionConversationsSnapshot(
+                subscriptionEvent.docs, selectedUser);
+        response.when(
+          success: (conversations) {
+            add(_OnNewMessagesReceived(event.context, conversations));
+          },
+          failure: (error) {
+            add(_SendErrorEvent(error));
+          },
+        );
+      },
+      onError: (error) {
+        emit(Error(ApiErrorHandler.handle(error)));
       },
     );
+  }
+
+  void _onRefreshConversations(
+    _RefreshConversations event,
+    Emitter<ChatState> emit,
+  ) async {
+    await chatSubscription?.cancel();
+    emit(const _Initial());
+    if (event.context.mounted) add(_GetConversations(event.context));
   }
 
   void _changeSelectedPageIndex(
@@ -96,7 +118,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         selectedUser = User.ali;
     }
     chatSubscription?.cancel();
-    add(const ChatEvent.getConversations());
+    add(ChatEvent.getConversations(event.context));
   }
 
   void _startNewConversation(
@@ -106,7 +128,8 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     final response = await _chatRepository.startNewConversation();
     response.when(
       success: (_) => null,
-      failure: (error) => null,
+      failure: (error) =>
+          ApiResponseSnackBar.showFailureSnackBar(event.context, error.message),
     );
   }
 
@@ -118,6 +141,13 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       'conversationId': event.conversationId,
       'userName': event.userName,
     });
+  }
+
+  void _sendErrorEvent(
+    _SendErrorEvent event,
+    Emitter<ChatState> emit,
+  ) {
+    emit(Error(event.apiErrorModel));
   }
 
   @override

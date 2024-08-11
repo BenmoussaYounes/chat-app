@@ -5,6 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobile_app/core/enums/user_enums.dart';
+import 'package:mobile_app/core/networking/api_error_model.dart';
+import 'package:mobile_app/core/networking/api_response_snackbar.dart';
 import 'package:mobile_app/features/conversation/domain/params/conversation_params.dart';
 import 'package:mobile_app/features/conversation/data/repositories/conversation_repository.dart';
 
@@ -28,6 +30,8 @@ class ConversationBloc extends Bloc<ConversationEvent, ConversationState> {
     on<_GetMessages>(_getConversation);
     on<_SendMessage>(_sendMessage);
     on<_MessageReceived>(_messageReceived);
+    on<_RefetchMessages>(_refetchMessages);
+    on<_SendErrorEvent>(_sendError);
   }
 
   Future<void> _getConversation(
@@ -42,24 +46,18 @@ class ConversationBloc extends Bloc<ConversationEvent, ConversationState> {
         .orderBy('messageTime', descending: false)
         .snapshots();
 
-    _conversationSubscription = conversationStream.listen((event) {
-      List<MessageBubbleModel> messages = [];
-      for (int index = 0; index < event.docs.length; index++) {
-        QueryDocumentSnapshot<Object?> message = event.docs[index];
-        Map<String, dynamic> data = message.data() as Map<String, dynamic>;
-        data['id'] = message.id;
+    _conversationSubscription =
+        conversationStream.listen((subscriptionEvent) async {
+      final response = await _conversationRepository.parseMessagesSnapshot(
+          subscriptionEvent.docs, selectedUser);
 
-        MessageBubbleModel messageBubble =
-            MessageBubbleModel.fromJson(data, selectedUser);
-
-        if (index == event.docs.length - 1 && messageBubble.isMe) {
-          messageBubble.haveSeenStatus = true;
-        }
-        messages.add(messageBubble);
-      }
-
-      add(_MessageReceived(messages));
-      _conversationRepository.markMessagesAsSeen(conversationId, selectedUser);
+      response.when(
+          success: (messages) {
+            add(_MessageReceived(messages));
+            _conversationRepository.markMessagesAsSeen(
+                conversationId, selectedUser);
+          },
+          failure: (error) => add(_SendErrorEvent(error)));
     });
   }
 
@@ -69,14 +67,31 @@ class ConversationBloc extends Bloc<ConversationEvent, ConversationState> {
     emit(ConversationState.loaded(messageBubble));
   }
 
-  void _sendMessage(_SendMessage event, Emitter<ConversationState> emit) {
+  void _sendMessage(_SendMessage event, Emitter<ConversationState> emit) async {
     final String newMessage = newMessageController.text.trim();
     newMessageController.clear();
 
-    _conversationRepository.sendNewMessage(SendNewMessageParams(
-        conversationId: conversationId,
-        sender: selectedUser,
-        message: newMessage));
+    final response = await _conversationRepository.sendNewMessage(
+        SendNewMessageParams(
+            conversationId: conversationId,
+            sender: selectedUser,
+            message: newMessage));
+
+    response.when(
+        success: (_) => null,
+        failure: (error) => ApiResponseSnackBar.showFailureSnackBar(
+            event.context, error.message));
+  }
+
+  void _refetchMessages(
+      _RefetchMessages event, Emitter<ConversationState> emit) async {
+    emit(const _Initial());
+    await _conversationSubscription?.cancel();
+    add(_GetMessages(conversationId, selectedUser));
+  }
+
+  void _sendError(_SendErrorEvent event, Emitter<ConversationState> emit) {
+    emit(ConversationState.error(event.apiErrorModel));
   }
 
   @override

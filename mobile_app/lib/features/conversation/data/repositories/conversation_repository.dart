@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mobile_app/core/enums/user_enums.dart';
+import 'package:mobile_app/core/networking/api_error_handler.dart';
 import 'package:mobile_app/core/networking/api_result.dart';
 
 import '../../../../core/networking/firebase_constants.dart';
 import '../../domain/params/conversation_params.dart';
+import '../models/message_bubble_model.dart';
 
 class ConversationRepository {
   Future<ApiResult> sendNewMessage(SendNewMessageParams params) async {
@@ -34,7 +36,7 @@ class ConversationRepository {
       });
       return const ApiResult.success(null);
     } catch (error) {
-      return ApiResult.failure(error.toString());
+      return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
 
@@ -69,9 +71,30 @@ class ConversationRepository {
       });
       return const ApiResult.success(null);
     } catch (error) {
-      print('-------------------------------------');
-      print(error);
-      return ApiResult.failure(error.toString());
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+
+  Future<ApiResult<List<MessageBubbleModel>>> parseMessagesSnapshot(
+      List<QueryDocumentSnapshot> snapshots, User selectedUser) async {
+    try {
+      List<MessageBubbleModel> messages = [];
+      for (int index = 0; index < snapshots.length; index++) {
+        QueryDocumentSnapshot<Object?> message = snapshots[index];
+        Map<String, dynamic> data = message.data() as Map<String, dynamic>;
+        data['id'] = message.id;
+
+        MessageBubbleModel messageBubble =
+            MessageBubbleModel.fromJson(data, selectedUser);
+
+        if (index == snapshots.length - 1 && messageBubble.isMe) {
+          messageBubble.haveSeenStatus = true;
+        }
+        messages.add(messageBubble);
+      }
+      return ApiResult.success(messages);
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
 }

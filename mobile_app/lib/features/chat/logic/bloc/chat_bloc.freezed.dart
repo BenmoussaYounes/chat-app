@@ -18,67 +18,83 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ChatEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getConversations,
-    required TResult Function(int pageIndex) changeSelectedPage,
+    required TResult Function(
+            BuildContext context, List<ConversationModel> conversations)
+        onNewMessagesReceived,
+    required TResult Function(BuildContext context) getConversations,
+    required TResult Function(BuildContext context, int pageIndex)
+        changeSelectedPage,
     required TResult Function(
             BuildContext context, String conversationId, String userName)
         openConversation,
-    required TResult Function() startNewConversation,
-    required TResult Function(List<ConversationModel> conversations)
-        onNewMessagesReceived,
+    required TResult Function(BuildContext context) startNewConversation,
+    required TResult Function(BuildContext context) refreshConversations,
+    required TResult Function(ApiErrorModel apiErrorModel) sendErrorEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getConversations,
-    TResult? Function(int pageIndex)? changeSelectedPage,
+    TResult? Function(
+            BuildContext context, List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    TResult? Function(BuildContext context)? getConversations,
+    TResult? Function(BuildContext context, int pageIndex)? changeSelectedPage,
     TResult? Function(
             BuildContext context, String conversationId, String userName)?
         openConversation,
-    TResult? Function()? startNewConversation,
-    TResult? Function(List<ConversationModel> conversations)?
-        onNewMessagesReceived,
+    TResult? Function(BuildContext context)? startNewConversation,
+    TResult? Function(BuildContext context)? refreshConversations,
+    TResult? Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getConversations,
-    TResult Function(int pageIndex)? changeSelectedPage,
+    TResult Function(
+            BuildContext context, List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    TResult Function(BuildContext context)? getConversations,
+    TResult Function(BuildContext context, int pageIndex)? changeSelectedPage,
     TResult Function(
             BuildContext context, String conversationId, String userName)?
         openConversation,
-    TResult Function()? startNewConversation,
-    TResult Function(List<ConversationModel> conversations)?
-        onNewMessagesReceived,
+    TResult Function(BuildContext context)? startNewConversation,
+    TResult Function(BuildContext context)? refreshConversations,
+    TResult Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_OnNewMessagesReceived value)
+        onNewMessagesReceived,
     required TResult Function(_GetConversations value) getConversations,
     required TResult Function(_ChangeSelectedPage value) changeSelectedPage,
     required TResult Function(_OpenConversation value) openConversation,
     required TResult Function(_StartNewConversation value) startNewConversation,
-    required TResult Function(_OnNewMessagesReceived value)
-        onNewMessagesReceived,
+    required TResult Function(_RefreshConversations value) refreshConversations,
+    required TResult Function(_SendErrorEvent value) sendErrorEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     TResult? Function(_GetConversations value)? getConversations,
     TResult? Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult? Function(_OpenConversation value)? openConversation,
     TResult? Function(_StartNewConversation value)? startNewConversation,
-    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    TResult? Function(_RefreshConversations value)? refreshConversations,
+    TResult? Function(_SendErrorEvent value)? sendErrorEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     TResult Function(_GetConversations value)? getConversations,
     TResult Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult Function(_OpenConversation value)? openConversation,
     TResult Function(_StartNewConversation value)? startNewConversation,
-    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    TResult Function(_RefreshConversations value)? refreshConversations,
+    TResult Function(_SendErrorEvent value)? sendErrorEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -102,10 +118,211 @@ class _$ChatEventCopyWithImpl<$Res, $Val extends ChatEvent>
 }
 
 /// @nodoc
+abstract class _$$OnNewMessagesReceivedImplCopyWith<$Res> {
+  factory _$$OnNewMessagesReceivedImplCopyWith(
+          _$OnNewMessagesReceivedImpl value,
+          $Res Function(_$OnNewMessagesReceivedImpl) then) =
+      __$$OnNewMessagesReceivedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context, List<ConversationModel> conversations});
+}
+
+/// @nodoc
+class __$$OnNewMessagesReceivedImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$OnNewMessagesReceivedImpl>
+    implements _$$OnNewMessagesReceivedImplCopyWith<$Res> {
+  __$$OnNewMessagesReceivedImplCopyWithImpl(_$OnNewMessagesReceivedImpl _value,
+      $Res Function(_$OnNewMessagesReceivedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+    Object? conversations = null,
+  }) {
+    return _then(_$OnNewMessagesReceivedImpl(
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+      null == conversations
+          ? _value._conversations
+          : conversations // ignore: cast_nullable_to_non_nullable
+              as List<ConversationModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnNewMessagesReceivedImpl implements _OnNewMessagesReceived {
+  const _$OnNewMessagesReceivedImpl(
+      this.context, final List<ConversationModel> conversations)
+      : _conversations = conversations;
+
+  @override
+  final BuildContext context;
+  final List<ConversationModel> _conversations;
+  @override
+  List<ConversationModel> get conversations {
+    if (_conversations is EqualUnmodifiableListView) return _conversations;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_conversations);
+  }
+
+  @override
+  String toString() {
+    return 'ChatEvent.onNewMessagesReceived(context: $context, conversations: $conversations)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnNewMessagesReceivedImpl &&
+            (identical(other.context, context) || other.context == context) &&
+            const DeepCollectionEquality()
+                .equals(other._conversations, _conversations));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, context,
+      const DeepCollectionEquality().hash(_conversations));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnNewMessagesReceivedImplCopyWith<_$OnNewMessagesReceivedImpl>
+      get copyWith => __$$OnNewMessagesReceivedImplCopyWithImpl<
+          _$OnNewMessagesReceivedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            BuildContext context, List<ConversationModel> conversations)
+        onNewMessagesReceived,
+    required TResult Function(BuildContext context) getConversations,
+    required TResult Function(BuildContext context, int pageIndex)
+        changeSelectedPage,
+    required TResult Function(
+            BuildContext context, String conversationId, String userName)
+        openConversation,
+    required TResult Function(BuildContext context) startNewConversation,
+    required TResult Function(BuildContext context) refreshConversations,
+    required TResult Function(ApiErrorModel apiErrorModel) sendErrorEvent,
+  }) {
+    return onNewMessagesReceived(context, conversations);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            BuildContext context, List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    TResult? Function(BuildContext context)? getConversations,
+    TResult? Function(BuildContext context, int pageIndex)? changeSelectedPage,
+    TResult? Function(
+            BuildContext context, String conversationId, String userName)?
+        openConversation,
+    TResult? Function(BuildContext context)? startNewConversation,
+    TResult? Function(BuildContext context)? refreshConversations,
+    TResult? Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
+  }) {
+    return onNewMessagesReceived?.call(context, conversations);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            BuildContext context, List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    TResult Function(BuildContext context)? getConversations,
+    TResult Function(BuildContext context, int pageIndex)? changeSelectedPage,
+    TResult Function(
+            BuildContext context, String conversationId, String userName)?
+        openConversation,
+    TResult Function(BuildContext context)? startNewConversation,
+    TResult Function(BuildContext context)? refreshConversations,
+    TResult Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
+    required TResult orElse(),
+  }) {
+    if (onNewMessagesReceived != null) {
+      return onNewMessagesReceived(context, conversations);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OnNewMessagesReceived value)
+        onNewMessagesReceived,
+    required TResult Function(_GetConversations value) getConversations,
+    required TResult Function(_ChangeSelectedPage value) changeSelectedPage,
+    required TResult Function(_OpenConversation value) openConversation,
+    required TResult Function(_StartNewConversation value) startNewConversation,
+    required TResult Function(_RefreshConversations value) refreshConversations,
+    required TResult Function(_SendErrorEvent value) sendErrorEvent,
+  }) {
+    return onNewMessagesReceived(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    TResult? Function(_GetConversations value)? getConversations,
+    TResult? Function(_ChangeSelectedPage value)? changeSelectedPage,
+    TResult? Function(_OpenConversation value)? openConversation,
+    TResult? Function(_StartNewConversation value)? startNewConversation,
+    TResult? Function(_RefreshConversations value)? refreshConversations,
+    TResult? Function(_SendErrorEvent value)? sendErrorEvent,
+  }) {
+    return onNewMessagesReceived?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    TResult Function(_GetConversations value)? getConversations,
+    TResult Function(_ChangeSelectedPage value)? changeSelectedPage,
+    TResult Function(_OpenConversation value)? openConversation,
+    TResult Function(_StartNewConversation value)? startNewConversation,
+    TResult Function(_RefreshConversations value)? refreshConversations,
+    TResult Function(_SendErrorEvent value)? sendErrorEvent,
+    required TResult orElse(),
+  }) {
+    if (onNewMessagesReceived != null) {
+      return onNewMessagesReceived(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnNewMessagesReceived implements ChatEvent {
+  const factory _OnNewMessagesReceived(final BuildContext context,
+          final List<ConversationModel> conversations) =
+      _$OnNewMessagesReceivedImpl;
+
+  BuildContext get context;
+  List<ConversationModel> get conversations;
+  @JsonKey(ignore: true)
+  _$$OnNewMessagesReceivedImplCopyWith<_$OnNewMessagesReceivedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$GetConversationsImplCopyWith<$Res> {
   factory _$$GetConversationsImplCopyWith(_$GetConversationsImpl value,
           $Res Function(_$GetConversationsImpl) then) =
       __$$GetConversationsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -115,72 +332,107 @@ class __$$GetConversationsImplCopyWithImpl<$Res>
   __$$GetConversationsImplCopyWithImpl(_$GetConversationsImpl _value,
       $Res Function(_$GetConversationsImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$GetConversationsImpl(
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetConversationsImpl implements _GetConversations {
-  const _$GetConversationsImpl();
+  const _$GetConversationsImpl(this.context);
+
+  @override
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'ChatEvent.getConversations()';
+    return 'ChatEvent.getConversations(context: $context)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetConversationsImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetConversationsImpl &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetConversationsImplCopyWith<_$GetConversationsImpl> get copyWith =>
+      __$$GetConversationsImplCopyWithImpl<_$GetConversationsImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getConversations,
-    required TResult Function(int pageIndex) changeSelectedPage,
+    required TResult Function(
+            BuildContext context, List<ConversationModel> conversations)
+        onNewMessagesReceived,
+    required TResult Function(BuildContext context) getConversations,
+    required TResult Function(BuildContext context, int pageIndex)
+        changeSelectedPage,
     required TResult Function(
             BuildContext context, String conversationId, String userName)
         openConversation,
-    required TResult Function() startNewConversation,
-    required TResult Function(List<ConversationModel> conversations)
-        onNewMessagesReceived,
+    required TResult Function(BuildContext context) startNewConversation,
+    required TResult Function(BuildContext context) refreshConversations,
+    required TResult Function(ApiErrorModel apiErrorModel) sendErrorEvent,
   }) {
-    return getConversations();
+    return getConversations(context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getConversations,
-    TResult? Function(int pageIndex)? changeSelectedPage,
+    TResult? Function(
+            BuildContext context, List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    TResult? Function(BuildContext context)? getConversations,
+    TResult? Function(BuildContext context, int pageIndex)? changeSelectedPage,
     TResult? Function(
             BuildContext context, String conversationId, String userName)?
         openConversation,
-    TResult? Function()? startNewConversation,
-    TResult? Function(List<ConversationModel> conversations)?
-        onNewMessagesReceived,
+    TResult? Function(BuildContext context)? startNewConversation,
+    TResult? Function(BuildContext context)? refreshConversations,
+    TResult? Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
   }) {
-    return getConversations?.call();
+    return getConversations?.call(context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getConversations,
-    TResult Function(int pageIndex)? changeSelectedPage,
+    TResult Function(
+            BuildContext context, List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    TResult Function(BuildContext context)? getConversations,
+    TResult Function(BuildContext context, int pageIndex)? changeSelectedPage,
     TResult Function(
             BuildContext context, String conversationId, String userName)?
         openConversation,
-    TResult Function()? startNewConversation,
-    TResult Function(List<ConversationModel> conversations)?
-        onNewMessagesReceived,
+    TResult Function(BuildContext context)? startNewConversation,
+    TResult Function(BuildContext context)? refreshConversations,
+    TResult Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
     required TResult orElse(),
   }) {
     if (getConversations != null) {
-      return getConversations();
+      return getConversations(context);
     }
     return orElse();
   }
@@ -188,12 +440,14 @@ class _$GetConversationsImpl implements _GetConversations {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_OnNewMessagesReceived value)
+        onNewMessagesReceived,
     required TResult Function(_GetConversations value) getConversations,
     required TResult Function(_ChangeSelectedPage value) changeSelectedPage,
     required TResult Function(_OpenConversation value) openConversation,
     required TResult Function(_StartNewConversation value) startNewConversation,
-    required TResult Function(_OnNewMessagesReceived value)
-        onNewMessagesReceived,
+    required TResult Function(_RefreshConversations value) refreshConversations,
+    required TResult Function(_SendErrorEvent value) sendErrorEvent,
   }) {
     return getConversations(this);
   }
@@ -201,11 +455,13 @@ class _$GetConversationsImpl implements _GetConversations {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     TResult? Function(_GetConversations value)? getConversations,
     TResult? Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult? Function(_OpenConversation value)? openConversation,
     TResult? Function(_StartNewConversation value)? startNewConversation,
-    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    TResult? Function(_RefreshConversations value)? refreshConversations,
+    TResult? Function(_SendErrorEvent value)? sendErrorEvent,
   }) {
     return getConversations?.call(this);
   }
@@ -213,11 +469,13 @@ class _$GetConversationsImpl implements _GetConversations {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     TResult Function(_GetConversations value)? getConversations,
     TResult Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult Function(_OpenConversation value)? openConversation,
     TResult Function(_StartNewConversation value)? startNewConversation,
-    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    TResult Function(_RefreshConversations value)? refreshConversations,
+    TResult Function(_SendErrorEvent value)? sendErrorEvent,
     required TResult orElse(),
   }) {
     if (getConversations != null) {
@@ -228,7 +486,13 @@ class _$GetConversationsImpl implements _GetConversations {
 }
 
 abstract class _GetConversations implements ChatEvent {
-  const factory _GetConversations() = _$GetConversationsImpl;
+  const factory _GetConversations(final BuildContext context) =
+      _$GetConversationsImpl;
+
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$GetConversationsImplCopyWith<_$GetConversationsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -237,7 +501,7 @@ abstract class _$$ChangeSelectedPageImplCopyWith<$Res> {
           $Res Function(_$ChangeSelectedPageImpl) then) =
       __$$ChangeSelectedPageImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int pageIndex});
+  $Res call({BuildContext context, int pageIndex});
 }
 
 /// @nodoc
@@ -251,9 +515,14 @@ class __$$ChangeSelectedPageImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? context = null,
     Object? pageIndex = null,
   }) {
     return _then(_$ChangeSelectedPageImpl(
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
       null == pageIndex
           ? _value.pageIndex
           : pageIndex // ignore: cast_nullable_to_non_nullable
@@ -265,14 +534,16 @@ class __$$ChangeSelectedPageImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ChangeSelectedPageImpl implements _ChangeSelectedPage {
-  const _$ChangeSelectedPageImpl(this.pageIndex);
+  const _$ChangeSelectedPageImpl(this.context, this.pageIndex);
 
+  @override
+  final BuildContext context;
   @override
   final int pageIndex;
 
   @override
   String toString() {
-    return 'ChatEvent.changeSelectedPage(pageIndex: $pageIndex)';
+    return 'ChatEvent.changeSelectedPage(context: $context, pageIndex: $pageIndex)';
   }
 
   @override
@@ -280,12 +551,13 @@ class _$ChangeSelectedPageImpl implements _ChangeSelectedPage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangeSelectedPageImpl &&
+            (identical(other.context, context) || other.context == context) &&
             (identical(other.pageIndex, pageIndex) ||
                 other.pageIndex == pageIndex));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pageIndex);
+  int get hashCode => Object.hash(runtimeType, context, pageIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -297,48 +569,58 @@ class _$ChangeSelectedPageImpl implements _ChangeSelectedPage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getConversations,
-    required TResult Function(int pageIndex) changeSelectedPage,
+    required TResult Function(
+            BuildContext context, List<ConversationModel> conversations)
+        onNewMessagesReceived,
+    required TResult Function(BuildContext context) getConversations,
+    required TResult Function(BuildContext context, int pageIndex)
+        changeSelectedPage,
     required TResult Function(
             BuildContext context, String conversationId, String userName)
         openConversation,
-    required TResult Function() startNewConversation,
-    required TResult Function(List<ConversationModel> conversations)
-        onNewMessagesReceived,
+    required TResult Function(BuildContext context) startNewConversation,
+    required TResult Function(BuildContext context) refreshConversations,
+    required TResult Function(ApiErrorModel apiErrorModel) sendErrorEvent,
   }) {
-    return changeSelectedPage(pageIndex);
+    return changeSelectedPage(context, pageIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getConversations,
-    TResult? Function(int pageIndex)? changeSelectedPage,
+    TResult? Function(
+            BuildContext context, List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    TResult? Function(BuildContext context)? getConversations,
+    TResult? Function(BuildContext context, int pageIndex)? changeSelectedPage,
     TResult? Function(
             BuildContext context, String conversationId, String userName)?
         openConversation,
-    TResult? Function()? startNewConversation,
-    TResult? Function(List<ConversationModel> conversations)?
-        onNewMessagesReceived,
+    TResult? Function(BuildContext context)? startNewConversation,
+    TResult? Function(BuildContext context)? refreshConversations,
+    TResult? Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
   }) {
-    return changeSelectedPage?.call(pageIndex);
+    return changeSelectedPage?.call(context, pageIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getConversations,
-    TResult Function(int pageIndex)? changeSelectedPage,
+    TResult Function(
+            BuildContext context, List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    TResult Function(BuildContext context)? getConversations,
+    TResult Function(BuildContext context, int pageIndex)? changeSelectedPage,
     TResult Function(
             BuildContext context, String conversationId, String userName)?
         openConversation,
-    TResult Function()? startNewConversation,
-    TResult Function(List<ConversationModel> conversations)?
-        onNewMessagesReceived,
+    TResult Function(BuildContext context)? startNewConversation,
+    TResult Function(BuildContext context)? refreshConversations,
+    TResult Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
     required TResult orElse(),
   }) {
     if (changeSelectedPage != null) {
-      return changeSelectedPage(pageIndex);
+      return changeSelectedPage(context, pageIndex);
     }
     return orElse();
   }
@@ -346,12 +628,14 @@ class _$ChangeSelectedPageImpl implements _ChangeSelectedPage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_OnNewMessagesReceived value)
+        onNewMessagesReceived,
     required TResult Function(_GetConversations value) getConversations,
     required TResult Function(_ChangeSelectedPage value) changeSelectedPage,
     required TResult Function(_OpenConversation value) openConversation,
     required TResult Function(_StartNewConversation value) startNewConversation,
-    required TResult Function(_OnNewMessagesReceived value)
-        onNewMessagesReceived,
+    required TResult Function(_RefreshConversations value) refreshConversations,
+    required TResult Function(_SendErrorEvent value) sendErrorEvent,
   }) {
     return changeSelectedPage(this);
   }
@@ -359,11 +643,13 @@ class _$ChangeSelectedPageImpl implements _ChangeSelectedPage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     TResult? Function(_GetConversations value)? getConversations,
     TResult? Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult? Function(_OpenConversation value)? openConversation,
     TResult? Function(_StartNewConversation value)? startNewConversation,
-    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    TResult? Function(_RefreshConversations value)? refreshConversations,
+    TResult? Function(_SendErrorEvent value)? sendErrorEvent,
   }) {
     return changeSelectedPage?.call(this);
   }
@@ -371,11 +657,13 @@ class _$ChangeSelectedPageImpl implements _ChangeSelectedPage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     TResult Function(_GetConversations value)? getConversations,
     TResult Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult Function(_OpenConversation value)? openConversation,
     TResult Function(_StartNewConversation value)? startNewConversation,
-    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    TResult Function(_RefreshConversations value)? refreshConversations,
+    TResult Function(_SendErrorEvent value)? sendErrorEvent,
     required TResult orElse(),
   }) {
     if (changeSelectedPage != null) {
@@ -386,9 +674,11 @@ class _$ChangeSelectedPageImpl implements _ChangeSelectedPage {
 }
 
 abstract class _ChangeSelectedPage implements ChatEvent {
-  const factory _ChangeSelectedPage(final int pageIndex) =
+  const factory _ChangeSelectedPage(
+          final BuildContext context, final int pageIndex) =
       _$ChangeSelectedPageImpl;
 
+  BuildContext get context;
   int get pageIndex;
   @JsonKey(ignore: true)
   _$$ChangeSelectedPageImplCopyWith<_$ChangeSelectedPageImpl> get copyWith =>
@@ -480,14 +770,18 @@ class _$OpenConversationImpl implements _OpenConversation {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getConversations,
-    required TResult Function(int pageIndex) changeSelectedPage,
+    required TResult Function(
+            BuildContext context, List<ConversationModel> conversations)
+        onNewMessagesReceived,
+    required TResult Function(BuildContext context) getConversations,
+    required TResult Function(BuildContext context, int pageIndex)
+        changeSelectedPage,
     required TResult Function(
             BuildContext context, String conversationId, String userName)
         openConversation,
-    required TResult Function() startNewConversation,
-    required TResult Function(List<ConversationModel> conversations)
-        onNewMessagesReceived,
+    required TResult Function(BuildContext context) startNewConversation,
+    required TResult Function(BuildContext context) refreshConversations,
+    required TResult Function(ApiErrorModel apiErrorModel) sendErrorEvent,
   }) {
     return openConversation(context, conversationId, userName);
   }
@@ -495,14 +789,17 @@ class _$OpenConversationImpl implements _OpenConversation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getConversations,
-    TResult? Function(int pageIndex)? changeSelectedPage,
+    TResult? Function(
+            BuildContext context, List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    TResult? Function(BuildContext context)? getConversations,
+    TResult? Function(BuildContext context, int pageIndex)? changeSelectedPage,
     TResult? Function(
             BuildContext context, String conversationId, String userName)?
         openConversation,
-    TResult? Function()? startNewConversation,
-    TResult? Function(List<ConversationModel> conversations)?
-        onNewMessagesReceived,
+    TResult? Function(BuildContext context)? startNewConversation,
+    TResult? Function(BuildContext context)? refreshConversations,
+    TResult? Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
   }) {
     return openConversation?.call(context, conversationId, userName);
   }
@@ -510,14 +807,17 @@ class _$OpenConversationImpl implements _OpenConversation {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getConversations,
-    TResult Function(int pageIndex)? changeSelectedPage,
+    TResult Function(
+            BuildContext context, List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    TResult Function(BuildContext context)? getConversations,
+    TResult Function(BuildContext context, int pageIndex)? changeSelectedPage,
     TResult Function(
             BuildContext context, String conversationId, String userName)?
         openConversation,
-    TResult Function()? startNewConversation,
-    TResult Function(List<ConversationModel> conversations)?
-        onNewMessagesReceived,
+    TResult Function(BuildContext context)? startNewConversation,
+    TResult Function(BuildContext context)? refreshConversations,
+    TResult Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
     required TResult orElse(),
   }) {
     if (openConversation != null) {
@@ -529,12 +829,14 @@ class _$OpenConversationImpl implements _OpenConversation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_OnNewMessagesReceived value)
+        onNewMessagesReceived,
     required TResult Function(_GetConversations value) getConversations,
     required TResult Function(_ChangeSelectedPage value) changeSelectedPage,
     required TResult Function(_OpenConversation value) openConversation,
     required TResult Function(_StartNewConversation value) startNewConversation,
-    required TResult Function(_OnNewMessagesReceived value)
-        onNewMessagesReceived,
+    required TResult Function(_RefreshConversations value) refreshConversations,
+    required TResult Function(_SendErrorEvent value) sendErrorEvent,
   }) {
     return openConversation(this);
   }
@@ -542,11 +844,13 @@ class _$OpenConversationImpl implements _OpenConversation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     TResult? Function(_GetConversations value)? getConversations,
     TResult? Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult? Function(_OpenConversation value)? openConversation,
     TResult? Function(_StartNewConversation value)? startNewConversation,
-    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    TResult? Function(_RefreshConversations value)? refreshConversations,
+    TResult? Function(_SendErrorEvent value)? sendErrorEvent,
   }) {
     return openConversation?.call(this);
   }
@@ -554,11 +858,13 @@ class _$OpenConversationImpl implements _OpenConversation {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     TResult Function(_GetConversations value)? getConversations,
     TResult Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult Function(_OpenConversation value)? openConversation,
     TResult Function(_StartNewConversation value)? startNewConversation,
-    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    TResult Function(_RefreshConversations value)? refreshConversations,
+    TResult Function(_SendErrorEvent value)? sendErrorEvent,
     required TResult orElse(),
   }) {
     if (openConversation != null) {
@@ -587,6 +893,8 @@ abstract class _$$StartNewConversationImplCopyWith<$Res> {
   factory _$$StartNewConversationImplCopyWith(_$StartNewConversationImpl value,
           $Res Function(_$StartNewConversationImpl) then) =
       __$$StartNewConversationImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -596,73 +904,108 @@ class __$$StartNewConversationImplCopyWithImpl<$Res>
   __$$StartNewConversationImplCopyWithImpl(_$StartNewConversationImpl _value,
       $Res Function(_$StartNewConversationImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$StartNewConversationImpl(
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$StartNewConversationImpl implements _StartNewConversation {
-  const _$StartNewConversationImpl();
+  const _$StartNewConversationImpl(this.context);
+
+  @override
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'ChatEvent.startNewConversation()';
+    return 'ChatEvent.startNewConversation(context: $context)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StartNewConversationImpl);
+            other is _$StartNewConversationImpl &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StartNewConversationImplCopyWith<_$StartNewConversationImpl>
+      get copyWith =>
+          __$$StartNewConversationImplCopyWithImpl<_$StartNewConversationImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getConversations,
-    required TResult Function(int pageIndex) changeSelectedPage,
+    required TResult Function(
+            BuildContext context, List<ConversationModel> conversations)
+        onNewMessagesReceived,
+    required TResult Function(BuildContext context) getConversations,
+    required TResult Function(BuildContext context, int pageIndex)
+        changeSelectedPage,
     required TResult Function(
             BuildContext context, String conversationId, String userName)
         openConversation,
-    required TResult Function() startNewConversation,
-    required TResult Function(List<ConversationModel> conversations)
-        onNewMessagesReceived,
+    required TResult Function(BuildContext context) startNewConversation,
+    required TResult Function(BuildContext context) refreshConversations,
+    required TResult Function(ApiErrorModel apiErrorModel) sendErrorEvent,
   }) {
-    return startNewConversation();
+    return startNewConversation(context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getConversations,
-    TResult? Function(int pageIndex)? changeSelectedPage,
+    TResult? Function(
+            BuildContext context, List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    TResult? Function(BuildContext context)? getConversations,
+    TResult? Function(BuildContext context, int pageIndex)? changeSelectedPage,
     TResult? Function(
             BuildContext context, String conversationId, String userName)?
         openConversation,
-    TResult? Function()? startNewConversation,
-    TResult? Function(List<ConversationModel> conversations)?
-        onNewMessagesReceived,
+    TResult? Function(BuildContext context)? startNewConversation,
+    TResult? Function(BuildContext context)? refreshConversations,
+    TResult? Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
   }) {
-    return startNewConversation?.call();
+    return startNewConversation?.call(context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getConversations,
-    TResult Function(int pageIndex)? changeSelectedPage,
+    TResult Function(
+            BuildContext context, List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    TResult Function(BuildContext context)? getConversations,
+    TResult Function(BuildContext context, int pageIndex)? changeSelectedPage,
     TResult Function(
             BuildContext context, String conversationId, String userName)?
         openConversation,
-    TResult Function()? startNewConversation,
-    TResult Function(List<ConversationModel> conversations)?
-        onNewMessagesReceived,
+    TResult Function(BuildContext context)? startNewConversation,
+    TResult Function(BuildContext context)? refreshConversations,
+    TResult Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
     required TResult orElse(),
   }) {
     if (startNewConversation != null) {
-      return startNewConversation();
+      return startNewConversation(context);
     }
     return orElse();
   }
@@ -670,12 +1013,14 @@ class _$StartNewConversationImpl implements _StartNewConversation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_OnNewMessagesReceived value)
+        onNewMessagesReceived,
     required TResult Function(_GetConversations value) getConversations,
     required TResult Function(_ChangeSelectedPage value) changeSelectedPage,
     required TResult Function(_OpenConversation value) openConversation,
     required TResult Function(_StartNewConversation value) startNewConversation,
-    required TResult Function(_OnNewMessagesReceived value)
-        onNewMessagesReceived,
+    required TResult Function(_RefreshConversations value) refreshConversations,
+    required TResult Function(_SendErrorEvent value) sendErrorEvent,
   }) {
     return startNewConversation(this);
   }
@@ -683,11 +1028,13 @@ class _$StartNewConversationImpl implements _StartNewConversation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     TResult? Function(_GetConversations value)? getConversations,
     TResult? Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult? Function(_OpenConversation value)? openConversation,
     TResult? Function(_StartNewConversation value)? startNewConversation,
-    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    TResult? Function(_RefreshConversations value)? refreshConversations,
+    TResult? Function(_SendErrorEvent value)? sendErrorEvent,
   }) {
     return startNewConversation?.call(this);
   }
@@ -695,11 +1042,13 @@ class _$StartNewConversationImpl implements _StartNewConversation {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     TResult Function(_GetConversations value)? getConversations,
     TResult Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult Function(_OpenConversation value)? openConversation,
     TResult Function(_StartNewConversation value)? startNewConversation,
-    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    TResult Function(_RefreshConversations value)? refreshConversations,
+    TResult Function(_SendErrorEvent value)? sendErrorEvent,
     required TResult orElse(),
   }) {
     if (startNewConversation != null) {
@@ -710,125 +1059,133 @@ class _$StartNewConversationImpl implements _StartNewConversation {
 }
 
 abstract class _StartNewConversation implements ChatEvent {
-  const factory _StartNewConversation() = _$StartNewConversationImpl;
+  const factory _StartNewConversation(final BuildContext context) =
+      _$StartNewConversationImpl;
+
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$StartNewConversationImplCopyWith<_$StartNewConversationImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$OnNewMessagesReceivedImplCopyWith<$Res> {
-  factory _$$OnNewMessagesReceivedImplCopyWith(
-          _$OnNewMessagesReceivedImpl value,
-          $Res Function(_$OnNewMessagesReceivedImpl) then) =
-      __$$OnNewMessagesReceivedImplCopyWithImpl<$Res>;
+abstract class _$$RefreshConversationsImplCopyWith<$Res> {
+  factory _$$RefreshConversationsImplCopyWith(_$RefreshConversationsImpl value,
+          $Res Function(_$RefreshConversationsImpl) then) =
+      __$$RefreshConversationsImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<ConversationModel> conversations});
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
-class __$$OnNewMessagesReceivedImplCopyWithImpl<$Res>
-    extends _$ChatEventCopyWithImpl<$Res, _$OnNewMessagesReceivedImpl>
-    implements _$$OnNewMessagesReceivedImplCopyWith<$Res> {
-  __$$OnNewMessagesReceivedImplCopyWithImpl(_$OnNewMessagesReceivedImpl _value,
-      $Res Function(_$OnNewMessagesReceivedImpl) _then)
+class __$$RefreshConversationsImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$RefreshConversationsImpl>
+    implements _$$RefreshConversationsImplCopyWith<$Res> {
+  __$$RefreshConversationsImplCopyWithImpl(_$RefreshConversationsImpl _value,
+      $Res Function(_$RefreshConversationsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? conversations = null,
+    Object? context = null,
   }) {
-    return _then(_$OnNewMessagesReceivedImpl(
-      null == conversations
-          ? _value._conversations
-          : conversations // ignore: cast_nullable_to_non_nullable
-              as List<ConversationModel>,
+    return _then(_$RefreshConversationsImpl(
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
     ));
   }
 }
 
 /// @nodoc
 
-class _$OnNewMessagesReceivedImpl implements _OnNewMessagesReceived {
-  const _$OnNewMessagesReceivedImpl(final List<ConversationModel> conversations)
-      : _conversations = conversations;
+class _$RefreshConversationsImpl implements _RefreshConversations {
+  const _$RefreshConversationsImpl(this.context);
 
-  final List<ConversationModel> _conversations;
   @override
-  List<ConversationModel> get conversations {
-    if (_conversations is EqualUnmodifiableListView) return _conversations;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_conversations);
-  }
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'ChatEvent.onNewMessagesReceived(conversations: $conversations)';
+    return 'ChatEvent.refreshConversations(context: $context)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OnNewMessagesReceivedImpl &&
-            const DeepCollectionEquality()
-                .equals(other._conversations, _conversations));
+            other is _$RefreshConversationsImpl &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_conversations));
+  int get hashCode => Object.hash(runtimeType, context);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$OnNewMessagesReceivedImplCopyWith<_$OnNewMessagesReceivedImpl>
-      get copyWith => __$$OnNewMessagesReceivedImplCopyWithImpl<
-          _$OnNewMessagesReceivedImpl>(this, _$identity);
+  _$$RefreshConversationsImplCopyWith<_$RefreshConversationsImpl>
+      get copyWith =>
+          __$$RefreshConversationsImplCopyWithImpl<_$RefreshConversationsImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getConversations,
-    required TResult Function(int pageIndex) changeSelectedPage,
+    required TResult Function(
+            BuildContext context, List<ConversationModel> conversations)
+        onNewMessagesReceived,
+    required TResult Function(BuildContext context) getConversations,
+    required TResult Function(BuildContext context, int pageIndex)
+        changeSelectedPage,
     required TResult Function(
             BuildContext context, String conversationId, String userName)
         openConversation,
-    required TResult Function() startNewConversation,
-    required TResult Function(List<ConversationModel> conversations)
-        onNewMessagesReceived,
+    required TResult Function(BuildContext context) startNewConversation,
+    required TResult Function(BuildContext context) refreshConversations,
+    required TResult Function(ApiErrorModel apiErrorModel) sendErrorEvent,
   }) {
-    return onNewMessagesReceived(conversations);
+    return refreshConversations(context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getConversations,
-    TResult? Function(int pageIndex)? changeSelectedPage,
+    TResult? Function(
+            BuildContext context, List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    TResult? Function(BuildContext context)? getConversations,
+    TResult? Function(BuildContext context, int pageIndex)? changeSelectedPage,
     TResult? Function(
             BuildContext context, String conversationId, String userName)?
         openConversation,
-    TResult? Function()? startNewConversation,
-    TResult? Function(List<ConversationModel> conversations)?
-        onNewMessagesReceived,
+    TResult? Function(BuildContext context)? startNewConversation,
+    TResult? Function(BuildContext context)? refreshConversations,
+    TResult? Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
   }) {
-    return onNewMessagesReceived?.call(conversations);
+    return refreshConversations?.call(context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getConversations,
-    TResult Function(int pageIndex)? changeSelectedPage,
+    TResult Function(
+            BuildContext context, List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    TResult Function(BuildContext context)? getConversations,
+    TResult Function(BuildContext context, int pageIndex)? changeSelectedPage,
     TResult Function(
             BuildContext context, String conversationId, String userName)?
         openConversation,
-    TResult Function()? startNewConversation,
-    TResult Function(List<ConversationModel> conversations)?
-        onNewMessagesReceived,
+    TResult Function(BuildContext context)? startNewConversation,
+    TResult Function(BuildContext context)? refreshConversations,
+    TResult Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
     required TResult orElse(),
   }) {
-    if (onNewMessagesReceived != null) {
-      return onNewMessagesReceived(conversations);
+    if (refreshConversations != null) {
+      return refreshConversations(context);
     }
     return orElse();
   }
@@ -836,54 +1193,239 @@ class _$OnNewMessagesReceivedImpl implements _OnNewMessagesReceived {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_OnNewMessagesReceived value)
+        onNewMessagesReceived,
     required TResult Function(_GetConversations value) getConversations,
     required TResult Function(_ChangeSelectedPage value) changeSelectedPage,
     required TResult Function(_OpenConversation value) openConversation,
     required TResult Function(_StartNewConversation value) startNewConversation,
-    required TResult Function(_OnNewMessagesReceived value)
-        onNewMessagesReceived,
+    required TResult Function(_RefreshConversations value) refreshConversations,
+    required TResult Function(_SendErrorEvent value) sendErrorEvent,
   }) {
-    return onNewMessagesReceived(this);
+    return refreshConversations(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     TResult? Function(_GetConversations value)? getConversations,
     TResult? Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult? Function(_OpenConversation value)? openConversation,
     TResult? Function(_StartNewConversation value)? startNewConversation,
-    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    TResult? Function(_RefreshConversations value)? refreshConversations,
+    TResult? Function(_SendErrorEvent value)? sendErrorEvent,
   }) {
-    return onNewMessagesReceived?.call(this);
+    return refreshConversations?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
     TResult Function(_GetConversations value)? getConversations,
     TResult Function(_ChangeSelectedPage value)? changeSelectedPage,
     TResult Function(_OpenConversation value)? openConversation,
     TResult Function(_StartNewConversation value)? startNewConversation,
-    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    TResult Function(_RefreshConversations value)? refreshConversations,
+    TResult Function(_SendErrorEvent value)? sendErrorEvent,
     required TResult orElse(),
   }) {
-    if (onNewMessagesReceived != null) {
-      return onNewMessagesReceived(this);
+    if (refreshConversations != null) {
+      return refreshConversations(this);
     }
     return orElse();
   }
 }
 
-abstract class _OnNewMessagesReceived implements ChatEvent {
-  const factory _OnNewMessagesReceived(
-          final List<ConversationModel> conversations) =
-      _$OnNewMessagesReceivedImpl;
+abstract class _RefreshConversations implements ChatEvent {
+  const factory _RefreshConversations(final BuildContext context) =
+      _$RefreshConversationsImpl;
 
-  List<ConversationModel> get conversations;
+  BuildContext get context;
   @JsonKey(ignore: true)
-  _$$OnNewMessagesReceivedImplCopyWith<_$OnNewMessagesReceivedImpl>
+  _$$RefreshConversationsImplCopyWith<_$RefreshConversationsImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SendErrorEventImplCopyWith<$Res> {
+  factory _$$SendErrorEventImplCopyWith(_$SendErrorEventImpl value,
+          $Res Function(_$SendErrorEventImpl) then) =
+      __$$SendErrorEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ApiErrorModel apiErrorModel});
+}
+
+/// @nodoc
+class __$$SendErrorEventImplCopyWithImpl<$Res>
+    extends _$ChatEventCopyWithImpl<$Res, _$SendErrorEventImpl>
+    implements _$$SendErrorEventImplCopyWith<$Res> {
+  __$$SendErrorEventImplCopyWithImpl(
+      _$SendErrorEventImpl _value, $Res Function(_$SendErrorEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? apiErrorModel = null,
+  }) {
+    return _then(_$SendErrorEventImpl(
+      null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SendErrorEventImpl implements _SendErrorEvent {
+  const _$SendErrorEventImpl(this.apiErrorModel);
+
+  @override
+  final ApiErrorModel apiErrorModel;
+
+  @override
+  String toString() {
+    return 'ChatEvent.sendErrorEvent(apiErrorModel: $apiErrorModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendErrorEventImpl &&
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendErrorEventImplCopyWith<_$SendErrorEventImpl> get copyWith =>
+      __$$SendErrorEventImplCopyWithImpl<_$SendErrorEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            BuildContext context, List<ConversationModel> conversations)
+        onNewMessagesReceived,
+    required TResult Function(BuildContext context) getConversations,
+    required TResult Function(BuildContext context, int pageIndex)
+        changeSelectedPage,
+    required TResult Function(
+            BuildContext context, String conversationId, String userName)
+        openConversation,
+    required TResult Function(BuildContext context) startNewConversation,
+    required TResult Function(BuildContext context) refreshConversations,
+    required TResult Function(ApiErrorModel apiErrorModel) sendErrorEvent,
+  }) {
+    return sendErrorEvent(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            BuildContext context, List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    TResult? Function(BuildContext context)? getConversations,
+    TResult? Function(BuildContext context, int pageIndex)? changeSelectedPage,
+    TResult? Function(
+            BuildContext context, String conversationId, String userName)?
+        openConversation,
+    TResult? Function(BuildContext context)? startNewConversation,
+    TResult? Function(BuildContext context)? refreshConversations,
+    TResult? Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
+  }) {
+    return sendErrorEvent?.call(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            BuildContext context, List<ConversationModel> conversations)?
+        onNewMessagesReceived,
+    TResult Function(BuildContext context)? getConversations,
+    TResult Function(BuildContext context, int pageIndex)? changeSelectedPage,
+    TResult Function(
+            BuildContext context, String conversationId, String userName)?
+        openConversation,
+    TResult Function(BuildContext context)? startNewConversation,
+    TResult Function(BuildContext context)? refreshConversations,
+    TResult Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
+    required TResult orElse(),
+  }) {
+    if (sendErrorEvent != null) {
+      return sendErrorEvent(apiErrorModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OnNewMessagesReceived value)
+        onNewMessagesReceived,
+    required TResult Function(_GetConversations value) getConversations,
+    required TResult Function(_ChangeSelectedPage value) changeSelectedPage,
+    required TResult Function(_OpenConversation value) openConversation,
+    required TResult Function(_StartNewConversation value) startNewConversation,
+    required TResult Function(_RefreshConversations value) refreshConversations,
+    required TResult Function(_SendErrorEvent value) sendErrorEvent,
+  }) {
+    return sendErrorEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    TResult? Function(_GetConversations value)? getConversations,
+    TResult? Function(_ChangeSelectedPage value)? changeSelectedPage,
+    TResult? Function(_OpenConversation value)? openConversation,
+    TResult? Function(_StartNewConversation value)? startNewConversation,
+    TResult? Function(_RefreshConversations value)? refreshConversations,
+    TResult? Function(_SendErrorEvent value)? sendErrorEvent,
+  }) {
+    return sendErrorEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OnNewMessagesReceived value)? onNewMessagesReceived,
+    TResult Function(_GetConversations value)? getConversations,
+    TResult Function(_ChangeSelectedPage value)? changeSelectedPage,
+    TResult Function(_OpenConversation value)? openConversation,
+    TResult Function(_StartNewConversation value)? startNewConversation,
+    TResult Function(_RefreshConversations value)? refreshConversations,
+    TResult Function(_SendErrorEvent value)? sendErrorEvent,
+    required TResult orElse(),
+  }) {
+    if (sendErrorEvent != null) {
+      return sendErrorEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendErrorEvent implements ChatEvent {
+  const factory _SendErrorEvent(final ApiErrorModel apiErrorModel) =
+      _$SendErrorEventImpl;
+
+  ApiErrorModel get apiErrorModel;
+  @JsonKey(ignore: true)
+  _$$SendErrorEventImplCopyWith<_$SendErrorEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -892,7 +1434,7 @@ mixin _$ChatState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<ChatListTileEntity> conversations) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(ApiErrorModel apiErrorModel) error,
     required TResult Function(int selectedPageIndex) changeSelectedPageIndex,
   }) =>
       throw _privateConstructorUsedError;
@@ -900,7 +1442,7 @@ mixin _$ChatState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<ChatListTileEntity> conversations)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(ApiErrorModel apiErrorModel)? error,
     TResult? Function(int selectedPageIndex)? changeSelectedPageIndex,
   }) =>
       throw _privateConstructorUsedError;
@@ -908,7 +1450,7 @@ mixin _$ChatState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<ChatListTileEntity> conversations)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(ApiErrorModel apiErrorModel)? error,
     TResult Function(int selectedPageIndex)? changeSelectedPageIndex,
     required TResult orElse(),
   }) =>
@@ -998,7 +1540,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<ChatListTileEntity> conversations) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(ApiErrorModel apiErrorModel) error,
     required TResult Function(int selectedPageIndex) changeSelectedPageIndex,
   }) {
     return initial();
@@ -1009,7 +1551,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<ChatListTileEntity> conversations)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(ApiErrorModel apiErrorModel)? error,
     TResult? Function(int selectedPageIndex)? changeSelectedPageIndex,
   }) {
     return initial?.call();
@@ -1020,7 +1562,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<ChatListTileEntity> conversations)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(ApiErrorModel apiErrorModel)? error,
     TResult Function(int selectedPageIndex)? changeSelectedPageIndex,
     required TResult orElse(),
   }) {
@@ -1147,7 +1689,7 @@ class _$LoadedImpl implements Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<ChatListTileEntity> conversations) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(ApiErrorModel apiErrorModel) error,
     required TResult Function(int selectedPageIndex) changeSelectedPageIndex,
   }) {
     return loaded(conversations);
@@ -1158,7 +1700,7 @@ class _$LoadedImpl implements Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<ChatListTileEntity> conversations)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(ApiErrorModel apiErrorModel)? error,
     TResult? Function(int selectedPageIndex)? changeSelectedPageIndex,
   }) {
     return loaded?.call(conversations);
@@ -1169,7 +1711,7 @@ class _$LoadedImpl implements Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<ChatListTileEntity> conversations)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(ApiErrorModel apiErrorModel)? error,
     TResult Function(int selectedPageIndex)? changeSelectedPageIndex,
     required TResult orElse(),
   }) {
@@ -1234,7 +1776,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message});
+  $Res call({ApiErrorModel apiErrorModel});
 }
 
 /// @nodoc
@@ -1248,13 +1790,13 @@ class __$$ErrorImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? apiErrorModel = null,
   }) {
     return _then(_$ErrorImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
+      null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
     ));
   }
 }
@@ -1262,14 +1804,14 @@ class __$$ErrorImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ErrorImpl implements Error {
-  const _$ErrorImpl(this.message);
+  const _$ErrorImpl(this.apiErrorModel);
 
   @override
-  final String message;
+  final ApiErrorModel apiErrorModel;
 
   @override
   String toString() {
-    return 'ChatState.error(message: $message)';
+    return 'ChatState.error(apiErrorModel: $apiErrorModel)';
   }
 
   @override
@@ -1277,11 +1819,12 @@ class _$ErrorImpl implements Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
 
   @JsonKey(ignore: true)
   @override
@@ -1294,10 +1837,10 @@ class _$ErrorImpl implements Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<ChatListTileEntity> conversations) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(ApiErrorModel apiErrorModel) error,
     required TResult Function(int selectedPageIndex) changeSelectedPageIndex,
   }) {
-    return error(message);
+    return error(apiErrorModel);
   }
 
   @override
@@ -1305,10 +1848,10 @@ class _$ErrorImpl implements Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<ChatListTileEntity> conversations)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(ApiErrorModel apiErrorModel)? error,
     TResult? Function(int selectedPageIndex)? changeSelectedPageIndex,
   }) {
-    return error?.call(message);
+    return error?.call(apiErrorModel);
   }
 
   @override
@@ -1316,12 +1859,12 @@ class _$ErrorImpl implements Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<ChatListTileEntity> conversations)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(ApiErrorModel apiErrorModel)? error,
     TResult Function(int selectedPageIndex)? changeSelectedPageIndex,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message);
+      return error(apiErrorModel);
     }
     return orElse();
   }
@@ -1366,9 +1909,9 @@ class _$ErrorImpl implements Error {
 }
 
 abstract class Error implements ChatState {
-  const factory Error(final String message) = _$ErrorImpl;
+  const factory Error(final ApiErrorModel apiErrorModel) = _$ErrorImpl;
 
-  String get message;
+  ApiErrorModel get apiErrorModel;
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1444,7 +1987,7 @@ class _$ChangeSelectedPageIndexImpl implements ChangeSelectedPageIndex {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<ChatListTileEntity> conversations) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(ApiErrorModel apiErrorModel) error,
     required TResult Function(int selectedPageIndex) changeSelectedPageIndex,
   }) {
     return changeSelectedPageIndex(selectedPageIndex);
@@ -1455,7 +1998,7 @@ class _$ChangeSelectedPageIndexImpl implements ChangeSelectedPageIndex {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<ChatListTileEntity> conversations)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(ApiErrorModel apiErrorModel)? error,
     TResult? Function(int selectedPageIndex)? changeSelectedPageIndex,
   }) {
     return changeSelectedPageIndex?.call(selectedPageIndex);
@@ -1466,7 +2009,7 @@ class _$ChangeSelectedPageIndexImpl implements ChangeSelectedPageIndex {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<ChatListTileEntity> conversations)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(ApiErrorModel apiErrorModel)? error,
     TResult Function(int selectedPageIndex)? changeSelectedPageIndex,
     required TResult orElse(),
   }) {

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mobile_app/core/networking/api_error_handler.dart';
 import 'package:mobile_app/core/networking/api_result.dart';
 import 'package:mobile_app/features/chat/data/data_source/chat_remote_data_source.dart';
 import 'package:mobile_app/features/chat/data/models/conversation_model.dart';
@@ -14,7 +16,7 @@ class ChatRepository {
       await _chatRemoteDataSource.startNewConversation();
       return const ApiResult.success(null);
     } catch (error) {
-      return ApiResult.failure(error.toString());
+      return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
 
@@ -25,7 +27,7 @@ class ChatRepository {
           await _chatRemoteDataSource.getConversations(selectedUser);
       return ApiResult.success(conversation);
     } catch (error) {
-      return ApiResult.failure(error.toString());
+      return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
 
@@ -36,7 +38,22 @@ class ChatRepository {
           await _chatRemoteDataSource.getLastMessage(conversationId);
       return ApiResult.success(lastMessage);
     } catch (error) {
-      return ApiResult.failure(error.toString());
+      return ApiResult.failure(ApiErrorHandler.handle(error));
+    }
+  }
+
+  Future<ApiResult<List<ConversationModel>>>
+      parseSubscriptionConversationsSnapshot(
+          List<QueryDocumentSnapshot> snapshots, User selectedUser) async {
+    try {
+      return ApiResult.success(snapshots.map((conversation) {
+        return ConversationModel.fromJson({
+          ...conversation.data() as Map<String, dynamic>,
+          'id': conversation.id,
+        }, selectedUser);
+      }).toList());
+    } catch (error) {
+      return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
 }

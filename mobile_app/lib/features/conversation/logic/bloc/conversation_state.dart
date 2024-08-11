@@ -6,7 +6,7 @@ class ConversationState with _$ConversationState {
 
   const factory ConversationState.loaded(List<MessageBubbleModel> messages) =
       _Loaded;
-  const factory ConversationState.error(String message) = Error;
+  const factory ConversationState.error(ApiErrorModel apiErrorModel) = Error;
   const factory ConversationState.newMessage(MessageBubbleModel message) =
       NewMessage;
 }

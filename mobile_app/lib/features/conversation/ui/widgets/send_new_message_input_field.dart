@@ -18,9 +18,9 @@ class SendNewMessageInputField extends StatefulWidget {
 class _SendNewMessageInputFieldState extends State<SendNewMessageInputField> {
   bool canSend = false;
 
-  void sendMessage() {
+  void sendMessage(BuildContext context) {
     context.read<ConversationBloc>().add(
-          const ConversationEvent.sendMessage(),
+          ConversationEvent.sendMessage(context),
         );
     setState(() {
       canSend = false;
@@ -32,9 +32,9 @@ class _SendNewMessageInputFieldState extends State<SendNewMessageInputField> {
     return AppTextFormField(
       controller: widget.controller,
       hintText: 'Type a message...',
-      onFieldSubmitted: canSend ? (_) => sendMessage() : null,
+      onFieldSubmitted: canSend ? (_) => sendMessage(context) : null,
       suffixIcon: IconButton(
-        onPressed: canSend ? sendMessage : null,
+        onPressed: canSend ? () => sendMessage(context) : null,
         icon: const Icon(Icons.send),
         color: ColorsManager.darkBlue,
       ),
