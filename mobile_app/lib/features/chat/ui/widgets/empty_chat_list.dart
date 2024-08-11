@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app/core/theming/colors_manager.dart';
+
+import '../../../../core/theming/colors_manager.dart';
 
 class EmptyChatList extends StatelessWidget {
   const EmptyChatList({super.key});

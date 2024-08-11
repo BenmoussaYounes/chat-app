@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mobile_app/core/enums/user_enums.dart';
+
+import '../../../../core/enums/user_enums.dart';
 
 class MessageBubbleModel {
   final String id;

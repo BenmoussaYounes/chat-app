@@ -1,8 +1,9 @@
 import 'package:get_it/get_it.dart';
-import 'package:mobile_app/features/chat/data/repositories/chat_repository.dart';
-import 'package:mobile_app/features/chat/logic/bloc/chat_bloc.dart';
 
 import '../../features/chat/data/data_source/chat_remote_data_source.dart';
+import '../../features/chat/data/repositories/chat_repository.dart';
+import '../../features/chat/logic/bloc/chat_bloc.dart';
+import '../../features/conversation/data/data_source/conversation_remote_data_source.dart';
 import '../../features/conversation/data/repositories/conversation_repository.dart';
 import '../../features/conversation/logic/bloc/conversation_bloc.dart';
 
@@ -17,5 +18,6 @@ Future<void> setupGetIt() async {
 
   // conversation
   getIt.registerFactory<ConversationBloc>(() => ConversationBloc(getIt()));
-  getIt.registerLazySingleton(() => ConversationRepository());
+  getIt.registerLazySingleton(() => ConversationRepository(getIt()));
+  getIt.registerLazySingleton(() => ConversationRemoteDataSource());
 }

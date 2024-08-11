@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+
+import 'package:badges/badges.dart' as badges;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 
-import 'package:mobile_app/features/chat/domain/entities/conversation_entity.dart';
-import 'package:mobile_app/features/chat/ui/widgets/leading_circle_avatar.dart';
-
+import '../../../../core/helpers/time_formatter.dart';
 import '../../../../core/theming/colors_manager.dart';
-import 'package:badges/badges.dart' as badges;
-
+import '../../domain/entities/conversation_entity.dart';
 import '../../logic/bloc/chat_bloc.dart';
+
+import 'leading_circle_avatar.dart';
 
 class ChatListTile extends StatelessWidget {
   const ChatListTile({super.key, required this.chatTile});
@@ -55,11 +55,13 @@ class ChatListTile extends StatelessWidget {
         style: Theme.of(context).textTheme.bodySmall!.copyWith(
               fontWeight: isMessageSeen ? FontWeight.normal : FontWeight.bold,
             ),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
       ),
       trailing: Text(
         chatTile.lastMessage == null
             ? ''
-            : DateFormat('hh:mm a').format(chatTile.lastMessage!.messageTime),
+            : TimeFormatter.formatSentTime(chatTile.lastMessage!.messageTime),
         style: Theme.of(context).textTheme.bodySmall!.copyWith(
               fontWeight: isMessageSeen ? FontWeight.normal : FontWeight.bold,
             ),

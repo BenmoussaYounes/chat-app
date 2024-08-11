@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile_app/core/di/dependency_injection.dart';
-import 'package:mobile_app/core/enums/user_enums.dart';
-import 'package:mobile_app/features/chat/logic/bloc/chat_bloc.dart';
-import 'package:mobile_app/features/conversation/ui/conversation_screen.dart';
 
+import '../../features/chat/logic/bloc/chat_bloc.dart';
 import '../../features/chat/ui/chat_screen.dart';
-
 import '../../features/conversation/logic/bloc/conversation_bloc.dart';
+import '../../features/conversation/ui/conversation_screen.dart';
+import '../di/dependency_injection.dart';
+import '../enums/user_enums.dart';
+
 import 'routes.dart';
 
 class AppRouter {

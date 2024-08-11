@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile_app/features/chat/ui/widgets/app_navigation_bar.dart';
-import 'package:mobile_app/features/chat/ui/widgets/empty_chat_list.dart';
-import 'package:mobile_app/features/chat/ui/widgets/error_occured.dart';
 
 import '../logic/bloc/chat_bloc.dart';
+
+import 'widgets/app_navigation_bar.dart';
 import 'widgets/chat_list_tile.dart';
+import 'widgets/chat_screen_loading_shimmer.dart';
+import 'widgets/empty_chat_list.dart';
+import 'widgets/error_occured.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -26,7 +29,7 @@ class ChatScreen extends StatelessWidget {
             builder: (context, state) {
               return state.maybeWhen(
                 changeSelectedPageIndex: (_) =>
-                    const Center(child: CircularProgressIndicator()),
+                    const ChatScreenLoadingShimmer(),
                 loaded: (conversations) => conversations.isNotEmpty
                     ? ListView.builder(
                         itemCount: conversations.length,
@@ -40,7 +43,7 @@ class ChatScreen extends StatelessWidget {
                     () => context
                         .read<ChatBloc>()
                         .add(ChatEvent.refreshConversations(context))),
-                orElse: () => const Center(child: CircularProgressIndicator()),
+                orElse: () => const ChatScreenLoadingShimmer(),
               );
             },
           ),

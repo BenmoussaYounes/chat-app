@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mobile_app/core/networking/firebase_constants.dart';
-import 'package:mobile_app/features/chat/data/models/conversation_model.dart';
 
 import '../../../../core/enums/user_enums.dart';
+import '../../../../core/networking/firebase_constants.dart';
+import '../models/conversation_model.dart';
 import '../models/last_message_model.dart';
 
 abstract class ChatRemoteDataSource {

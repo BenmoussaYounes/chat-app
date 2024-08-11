@@ -1,17 +1,18 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mobile_app/core/enums/user_enums.dart';
-import 'package:mobile_app/core/networking/api_error_model.dart';
-import 'package:mobile_app/core/networking/api_response_snackbar.dart';
-import 'package:mobile_app/features/conversation/domain/params/conversation_params.dart';
-import 'package:mobile_app/features/conversation/data/repositories/conversation_repository.dart';
 
+import '../../../../core/enums/user_enums.dart';
+import '../../../../core/networking/api_error_model.dart';
+import '../../../../core/networking/api_response_snackbar.dart';
 import '../../../../core/networking/firebase_constants.dart';
 import '../../data/models/message_bubble_model.dart';
+import '../../data/repositories/conversation_repository.dart';
+import '../../domain/params/conversation_params.dart';
 
 part 'conversation_event.dart';
 part 'conversation_state.dart';

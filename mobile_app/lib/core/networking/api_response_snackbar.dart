@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app/core/theming/colors_manager.dart';
+
+import '../theming/colors_manager.dart';
 
 class ApiResponseSnackBar {
   static showFailureSnackBar(BuildContext context, String errorMessage) {
