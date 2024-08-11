@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app/core/widgets/app_circle_avatar.dart';
 
 import '../../../../core/theming/colors_manager.dart';
+import '../../../../core/widgets/app_circle_avatar.dart';
 
 class LeadingCircleAvatar extends StatelessWidget {
   const LeadingCircleAvatar({super.key});

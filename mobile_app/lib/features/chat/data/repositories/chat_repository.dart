@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mobile_app/core/networking/api_error_handler.dart';
-import 'package:mobile_app/core/networking/api_result.dart';
-import 'package:mobile_app/features/chat/data/data_source/chat_remote_data_source.dart';
-import 'package:mobile_app/features/chat/data/models/conversation_model.dart';
-import 'package:mobile_app/features/chat/data/models/last_message_model.dart';
 
 import '../../../../core/enums/user_enums.dart';
+import '../../../../core/networking/api_error_handler.dart';
+import '../../../../core/networking/api_result.dart';
+import '../data_source/chat_remote_data_source.dart';
+import '../models/conversation_model.dart';
+import '../models/last_message_model.dart';
 
 class ChatRepository {
   ChatRepository(this._chatRemoteDataSource);

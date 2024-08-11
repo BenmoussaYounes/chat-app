@@ -1,23 +1,23 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mobile_app/core/enums/user_enums.dart';
-import 'package:mobile_app/core/helpers/extensions.dart';
-import 'package:mobile_app/core/networking/api_error_handler.dart';
-import 'package:mobile_app/core/networking/api_error_model.dart';
-import 'package:mobile_app/core/networking/api_response_snackbar.dart';
-import 'package:mobile_app/core/networking/api_result.dart';
-import 'package:mobile_app/core/networking/firebase_constants.dart';
-import 'package:mobile_app/core/routing/routes.dart';
 
-import 'package:mobile_app/features/chat/domain/entities/conversation_entity.dart';
-
+import '../../../../core/enums/user_enums.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/networking/api_error_handler.dart';
+import '../../../../core/networking/api_error_model.dart';
+import '../../../../core/networking/api_response_snackbar.dart';
+import '../../../../core/networking/api_result.dart';
+import '../../../../core/networking/firebase_constants.dart';
+import '../../../../core/routing/routes.dart';
 import '../../data/models/conversation_model.dart';
 import '../../data/repositories/chat_repository.dart';
+import '../../domain/entities/conversation_entity.dart';
 
 part 'chat_event.dart';
 part 'chat_state.dart';

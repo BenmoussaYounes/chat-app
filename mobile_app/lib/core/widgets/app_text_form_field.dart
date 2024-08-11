@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile_app/core/theming/colors_manager.dart';
+
+import '../theming/colors_manager.dart';
 
 class AppTextFormField extends StatelessWidget {
   const AppTextFormField({
@@ -39,6 +41,7 @@ class AppTextFormField extends StatelessWidget {
       textInputAction: TextInputAction.send,
       onFieldSubmitted: onFieldSubmitted,
       onChanged: onChanged,
+      maxLines: null,
     );
   }
 }

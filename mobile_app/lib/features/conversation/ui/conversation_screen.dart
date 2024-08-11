@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mobile_app/core/enums/user_enums.dart';
 
-import 'package:mobile_app/core/widgets/page_loading_indicator.dart';
-import 'package:mobile_app/features/chat/ui/widgets/error_occured.dart';
-import 'package:mobile_app/features/conversation/ui/widgets/empty_conversation_list.dart';
-
-import 'package:mobile_app/features/conversation/ui/widgets/message_bubble.dart';
-
+import '../../../core/enums/user_enums.dart';
+import '../../../core/helpers/extensions.dart';
+import '../../../core/widgets/page_loading_indicator.dart';
+import '../../chat/ui/widgets/error_occured.dart';
 import '../logic/bloc/conversation_bloc.dart';
+
+import 'widgets/empty_conversation_list.dart';
+import 'widgets/message_bubble.dart';
 import 'widgets/send_new_message_input_field.dart';
 
 class ConversationScreen extends StatefulWidget {
@@ -36,7 +37,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          widget.user.value,
+          widget.user.value.toUpperCaseFirstLetter(),
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         centerTitle: true,

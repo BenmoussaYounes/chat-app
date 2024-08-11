@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
-import 'package:mobile_app/core/helpers/spacing.dart';
-import 'package:mobile_app/core/theming/colors_manager.dart';
-import 'package:mobile_app/core/widgets/seen_status_icon.dart';
 
-import 'package:mobile_app/features/conversation/data/models/message_bubble_model.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/helpers/spacing.dart';
+import '../../../../core/helpers/time_formatter.dart';
+import '../../../../core/theming/colors_manager.dart';
+import '../../../../core/widgets/seen_status_icon.dart';
+import '../../data/models/message_bubble_model.dart';
 
 class MessageBubble extends StatelessWidget {
   final MessageBubbleModel messageBubble;
@@ -64,7 +65,7 @@ class MessageBubble extends StatelessWidget {
                         fontWeight: FontWeight.w500)),
                 horizontalSpace(8),
                 Text(
-                  DateFormat('hh:mm a').format(messageBubble.messageTime),
+                  TimeFormatter.formatSentTime(messageBubble.messageTime),
                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       fontSize: 8.sp,
                       color: messageBubble.isMe
