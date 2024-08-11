@@ -20,25 +20,31 @@ mixin _$ConversationEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String conversationId, User selectedUser)
         getMessages,
-    required TResult Function() sendMessage,
+    required TResult Function(BuildContext context) sendMessage,
     required TResult Function(List<MessageBubbleModel> messagesBubbles)
         messagesReceived,
+    required TResult Function(ApiErrorModel apiErrorModel) sendErrorEvent,
+    required TResult Function() refetchMessages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String conversationId, User selectedUser)? getMessages,
-    TResult? Function()? sendMessage,
+    TResult? Function(BuildContext context)? sendMessage,
     TResult? Function(List<MessageBubbleModel> messagesBubbles)?
         messagesReceived,
+    TResult? Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
+    TResult? Function()? refetchMessages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String conversationId, User selectedUser)? getMessages,
-    TResult Function()? sendMessage,
+    TResult Function(BuildContext context)? sendMessage,
     TResult Function(List<MessageBubbleModel> messagesBubbles)?
         messagesReceived,
+    TResult Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
+    TResult Function()? refetchMessages,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +53,8 @@ mixin _$ConversationEvent {
     required TResult Function(_GetMessages value) getMessages,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_MessageReceived value) messagesReceived,
+    required TResult Function(_SendErrorEvent value) sendErrorEvent,
+    required TResult Function(_RefetchMessages value) refetchMessages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +62,8 @@ mixin _$ConversationEvent {
     TResult? Function(_GetMessages value)? getMessages,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_MessageReceived value)? messagesReceived,
+    TResult? Function(_SendErrorEvent value)? sendErrorEvent,
+    TResult? Function(_RefetchMessages value)? refetchMessages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +71,8 @@ mixin _$ConversationEvent {
     TResult Function(_GetMessages value)? getMessages,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_MessageReceived value)? messagesReceived,
+    TResult Function(_SendErrorEvent value)? sendErrorEvent,
+    TResult Function(_RefetchMessages value)? refetchMessages,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -160,9 +172,11 @@ class _$GetMessagesImpl implements _GetMessages {
   TResult when<TResult extends Object?>({
     required TResult Function(String conversationId, User selectedUser)
         getMessages,
-    required TResult Function() sendMessage,
+    required TResult Function(BuildContext context) sendMessage,
     required TResult Function(List<MessageBubbleModel> messagesBubbles)
         messagesReceived,
+    required TResult Function(ApiErrorModel apiErrorModel) sendErrorEvent,
+    required TResult Function() refetchMessages,
   }) {
     return getMessages(conversationId, selectedUser);
   }
@@ -171,9 +185,11 @@ class _$GetMessagesImpl implements _GetMessages {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String conversationId, User selectedUser)? getMessages,
-    TResult? Function()? sendMessage,
+    TResult? Function(BuildContext context)? sendMessage,
     TResult? Function(List<MessageBubbleModel> messagesBubbles)?
         messagesReceived,
+    TResult? Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
+    TResult? Function()? refetchMessages,
   }) {
     return getMessages?.call(conversationId, selectedUser);
   }
@@ -182,9 +198,11 @@ class _$GetMessagesImpl implements _GetMessages {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String conversationId, User selectedUser)? getMessages,
-    TResult Function()? sendMessage,
+    TResult Function(BuildContext context)? sendMessage,
     TResult Function(List<MessageBubbleModel> messagesBubbles)?
         messagesReceived,
+    TResult Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
+    TResult Function()? refetchMessages,
     required TResult orElse(),
   }) {
     if (getMessages != null) {
@@ -199,6 +217,8 @@ class _$GetMessagesImpl implements _GetMessages {
     required TResult Function(_GetMessages value) getMessages,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_MessageReceived value) messagesReceived,
+    required TResult Function(_SendErrorEvent value) sendErrorEvent,
+    required TResult Function(_RefetchMessages value) refetchMessages,
   }) {
     return getMessages(this);
   }
@@ -209,6 +229,8 @@ class _$GetMessagesImpl implements _GetMessages {
     TResult? Function(_GetMessages value)? getMessages,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_MessageReceived value)? messagesReceived,
+    TResult? Function(_SendErrorEvent value)? sendErrorEvent,
+    TResult? Function(_RefetchMessages value)? refetchMessages,
   }) {
     return getMessages?.call(this);
   }
@@ -219,6 +241,8 @@ class _$GetMessagesImpl implements _GetMessages {
     TResult Function(_GetMessages value)? getMessages,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_MessageReceived value)? messagesReceived,
+    TResult Function(_SendErrorEvent value)? sendErrorEvent,
+    TResult Function(_RefetchMessages value)? refetchMessages,
     required TResult orElse(),
   }) {
     if (getMessages != null) {
@@ -244,6 +268,8 @@ abstract class _$$SendMessageImplCopyWith<$Res> {
   factory _$$SendMessageImplCopyWith(
           _$SendMessageImpl value, $Res Function(_$SendMessageImpl) then) =
       __$$SendMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context});
 }
 
 /// @nodoc
@@ -253,61 +279,91 @@ class __$$SendMessageImplCopyWithImpl<$Res>
   __$$SendMessageImplCopyWithImpl(
       _$SendMessageImpl _value, $Res Function(_$SendMessageImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$SendMessageImpl(
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SendMessageImpl implements _SendMessage {
-  const _$SendMessageImpl();
+  const _$SendMessageImpl(this.context);
+
+  @override
+  final BuildContext context;
 
   @override
   String toString() {
-    return 'ConversationEvent.sendMessage()';
+    return 'ConversationEvent.sendMessage(context: $context)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SendMessageImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SendMessageImpl &&
+            (identical(other.context, context) || other.context == context));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendMessageImplCopyWith<_$SendMessageImpl> get copyWith =>
+      __$$SendMessageImplCopyWithImpl<_$SendMessageImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String conversationId, User selectedUser)
         getMessages,
-    required TResult Function() sendMessage,
+    required TResult Function(BuildContext context) sendMessage,
     required TResult Function(List<MessageBubbleModel> messagesBubbles)
         messagesReceived,
+    required TResult Function(ApiErrorModel apiErrorModel) sendErrorEvent,
+    required TResult Function() refetchMessages,
   }) {
-    return sendMessage();
+    return sendMessage(context);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String conversationId, User selectedUser)? getMessages,
-    TResult? Function()? sendMessage,
+    TResult? Function(BuildContext context)? sendMessage,
     TResult? Function(List<MessageBubbleModel> messagesBubbles)?
         messagesReceived,
+    TResult? Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
+    TResult? Function()? refetchMessages,
   }) {
-    return sendMessage?.call();
+    return sendMessage?.call(context);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String conversationId, User selectedUser)? getMessages,
-    TResult Function()? sendMessage,
+    TResult Function(BuildContext context)? sendMessage,
     TResult Function(List<MessageBubbleModel> messagesBubbles)?
         messagesReceived,
+    TResult Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
+    TResult Function()? refetchMessages,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
-      return sendMessage();
+      return sendMessage(context);
     }
     return orElse();
   }
@@ -318,6 +374,8 @@ class _$SendMessageImpl implements _SendMessage {
     required TResult Function(_GetMessages value) getMessages,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_MessageReceived value) messagesReceived,
+    required TResult Function(_SendErrorEvent value) sendErrorEvent,
+    required TResult Function(_RefetchMessages value) refetchMessages,
   }) {
     return sendMessage(this);
   }
@@ -328,6 +386,8 @@ class _$SendMessageImpl implements _SendMessage {
     TResult? Function(_GetMessages value)? getMessages,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_MessageReceived value)? messagesReceived,
+    TResult? Function(_SendErrorEvent value)? sendErrorEvent,
+    TResult? Function(_RefetchMessages value)? refetchMessages,
   }) {
     return sendMessage?.call(this);
   }
@@ -338,6 +398,8 @@ class _$SendMessageImpl implements _SendMessage {
     TResult Function(_GetMessages value)? getMessages,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_MessageReceived value)? messagesReceived,
+    TResult Function(_SendErrorEvent value)? sendErrorEvent,
+    TResult Function(_RefetchMessages value)? refetchMessages,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -348,7 +410,12 @@ class _$SendMessageImpl implements _SendMessage {
 }
 
 abstract class _SendMessage implements ConversationEvent {
-  const factory _SendMessage() = _$SendMessageImpl;
+  const factory _SendMessage(final BuildContext context) = _$SendMessageImpl;
+
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$SendMessageImplCopyWith<_$SendMessageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -426,9 +493,11 @@ class _$MessageReceivedImpl implements _MessageReceived {
   TResult when<TResult extends Object?>({
     required TResult Function(String conversationId, User selectedUser)
         getMessages,
-    required TResult Function() sendMessage,
+    required TResult Function(BuildContext context) sendMessage,
     required TResult Function(List<MessageBubbleModel> messagesBubbles)
         messagesReceived,
+    required TResult Function(ApiErrorModel apiErrorModel) sendErrorEvent,
+    required TResult Function() refetchMessages,
   }) {
     return messagesReceived(messagesBubbles);
   }
@@ -437,9 +506,11 @@ class _$MessageReceivedImpl implements _MessageReceived {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String conversationId, User selectedUser)? getMessages,
-    TResult? Function()? sendMessage,
+    TResult? Function(BuildContext context)? sendMessage,
     TResult? Function(List<MessageBubbleModel> messagesBubbles)?
         messagesReceived,
+    TResult? Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
+    TResult? Function()? refetchMessages,
   }) {
     return messagesReceived?.call(messagesBubbles);
   }
@@ -448,9 +519,11 @@ class _$MessageReceivedImpl implements _MessageReceived {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String conversationId, User selectedUser)? getMessages,
-    TResult Function()? sendMessage,
+    TResult Function(BuildContext context)? sendMessage,
     TResult Function(List<MessageBubbleModel> messagesBubbles)?
         messagesReceived,
+    TResult Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
+    TResult Function()? refetchMessages,
     required TResult orElse(),
   }) {
     if (messagesReceived != null) {
@@ -465,6 +538,8 @@ class _$MessageReceivedImpl implements _MessageReceived {
     required TResult Function(_GetMessages value) getMessages,
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_MessageReceived value) messagesReceived,
+    required TResult Function(_SendErrorEvent value) sendErrorEvent,
+    required TResult Function(_RefetchMessages value) refetchMessages,
   }) {
     return messagesReceived(this);
   }
@@ -475,6 +550,8 @@ class _$MessageReceivedImpl implements _MessageReceived {
     TResult? Function(_GetMessages value)? getMessages,
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_MessageReceived value)? messagesReceived,
+    TResult? Function(_SendErrorEvent value)? sendErrorEvent,
+    TResult? Function(_RefetchMessages value)? refetchMessages,
   }) {
     return messagesReceived?.call(this);
   }
@@ -485,6 +562,8 @@ class _$MessageReceivedImpl implements _MessageReceived {
     TResult Function(_GetMessages value)? getMessages,
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_MessageReceived value)? messagesReceived,
+    TResult Function(_SendErrorEvent value)? sendErrorEvent,
+    TResult Function(_RefetchMessages value)? refetchMessages,
     required TResult orElse(),
   }) {
     if (messagesReceived != null) {
@@ -505,12 +584,294 @@ abstract class _MessageReceived implements ConversationEvent {
 }
 
 /// @nodoc
+abstract class _$$SendErrorEventImplCopyWith<$Res> {
+  factory _$$SendErrorEventImplCopyWith(_$SendErrorEventImpl value,
+          $Res Function(_$SendErrorEventImpl) then) =
+      __$$SendErrorEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ApiErrorModel apiErrorModel});
+}
+
+/// @nodoc
+class __$$SendErrorEventImplCopyWithImpl<$Res>
+    extends _$ConversationEventCopyWithImpl<$Res, _$SendErrorEventImpl>
+    implements _$$SendErrorEventImplCopyWith<$Res> {
+  __$$SendErrorEventImplCopyWithImpl(
+      _$SendErrorEventImpl _value, $Res Function(_$SendErrorEventImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? apiErrorModel = null,
+  }) {
+    return _then(_$SendErrorEventImpl(
+      null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SendErrorEventImpl implements _SendErrorEvent {
+  const _$SendErrorEventImpl(this.apiErrorModel);
+
+  @override
+  final ApiErrorModel apiErrorModel;
+
+  @override
+  String toString() {
+    return 'ConversationEvent.sendErrorEvent(apiErrorModel: $apiErrorModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendErrorEventImpl &&
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendErrorEventImplCopyWith<_$SendErrorEventImpl> get copyWith =>
+      __$$SendErrorEventImplCopyWithImpl<_$SendErrorEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String conversationId, User selectedUser)
+        getMessages,
+    required TResult Function(BuildContext context) sendMessage,
+    required TResult Function(List<MessageBubbleModel> messagesBubbles)
+        messagesReceived,
+    required TResult Function(ApiErrorModel apiErrorModel) sendErrorEvent,
+    required TResult Function() refetchMessages,
+  }) {
+    return sendErrorEvent(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String conversationId, User selectedUser)? getMessages,
+    TResult? Function(BuildContext context)? sendMessage,
+    TResult? Function(List<MessageBubbleModel> messagesBubbles)?
+        messagesReceived,
+    TResult? Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
+    TResult? Function()? refetchMessages,
+  }) {
+    return sendErrorEvent?.call(apiErrorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String conversationId, User selectedUser)? getMessages,
+    TResult Function(BuildContext context)? sendMessage,
+    TResult Function(List<MessageBubbleModel> messagesBubbles)?
+        messagesReceived,
+    TResult Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
+    TResult Function()? refetchMessages,
+    required TResult orElse(),
+  }) {
+    if (sendErrorEvent != null) {
+      return sendErrorEvent(apiErrorModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetMessages value) getMessages,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_MessageReceived value) messagesReceived,
+    required TResult Function(_SendErrorEvent value) sendErrorEvent,
+    required TResult Function(_RefetchMessages value) refetchMessages,
+  }) {
+    return sendErrorEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetMessages value)? getMessages,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_MessageReceived value)? messagesReceived,
+    TResult? Function(_SendErrorEvent value)? sendErrorEvent,
+    TResult? Function(_RefetchMessages value)? refetchMessages,
+  }) {
+    return sendErrorEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetMessages value)? getMessages,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_MessageReceived value)? messagesReceived,
+    TResult Function(_SendErrorEvent value)? sendErrorEvent,
+    TResult Function(_RefetchMessages value)? refetchMessages,
+    required TResult orElse(),
+  }) {
+    if (sendErrorEvent != null) {
+      return sendErrorEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendErrorEvent implements ConversationEvent {
+  const factory _SendErrorEvent(final ApiErrorModel apiErrorModel) =
+      _$SendErrorEventImpl;
+
+  ApiErrorModel get apiErrorModel;
+  @JsonKey(ignore: true)
+  _$$SendErrorEventImplCopyWith<_$SendErrorEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RefetchMessagesImplCopyWith<$Res> {
+  factory _$$RefetchMessagesImplCopyWith(_$RefetchMessagesImpl value,
+          $Res Function(_$RefetchMessagesImpl) then) =
+      __$$RefetchMessagesImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RefetchMessagesImplCopyWithImpl<$Res>
+    extends _$ConversationEventCopyWithImpl<$Res, _$RefetchMessagesImpl>
+    implements _$$RefetchMessagesImplCopyWith<$Res> {
+  __$$RefetchMessagesImplCopyWithImpl(
+      _$RefetchMessagesImpl _value, $Res Function(_$RefetchMessagesImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RefetchMessagesImpl implements _RefetchMessages {
+  const _$RefetchMessagesImpl();
+
+  @override
+  String toString() {
+    return 'ConversationEvent.refetchMessages()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RefetchMessagesImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String conversationId, User selectedUser)
+        getMessages,
+    required TResult Function(BuildContext context) sendMessage,
+    required TResult Function(List<MessageBubbleModel> messagesBubbles)
+        messagesReceived,
+    required TResult Function(ApiErrorModel apiErrorModel) sendErrorEvent,
+    required TResult Function() refetchMessages,
+  }) {
+    return refetchMessages();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String conversationId, User selectedUser)? getMessages,
+    TResult? Function(BuildContext context)? sendMessage,
+    TResult? Function(List<MessageBubbleModel> messagesBubbles)?
+        messagesReceived,
+    TResult? Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
+    TResult? Function()? refetchMessages,
+  }) {
+    return refetchMessages?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String conversationId, User selectedUser)? getMessages,
+    TResult Function(BuildContext context)? sendMessage,
+    TResult Function(List<MessageBubbleModel> messagesBubbles)?
+        messagesReceived,
+    TResult Function(ApiErrorModel apiErrorModel)? sendErrorEvent,
+    TResult Function()? refetchMessages,
+    required TResult orElse(),
+  }) {
+    if (refetchMessages != null) {
+      return refetchMessages();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetMessages value) getMessages,
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_MessageReceived value) messagesReceived,
+    required TResult Function(_SendErrorEvent value) sendErrorEvent,
+    required TResult Function(_RefetchMessages value) refetchMessages,
+  }) {
+    return refetchMessages(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetMessages value)? getMessages,
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_MessageReceived value)? messagesReceived,
+    TResult? Function(_SendErrorEvent value)? sendErrorEvent,
+    TResult? Function(_RefetchMessages value)? refetchMessages,
+  }) {
+    return refetchMessages?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetMessages value)? getMessages,
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_MessageReceived value)? messagesReceived,
+    TResult Function(_SendErrorEvent value)? sendErrorEvent,
+    TResult Function(_RefetchMessages value)? refetchMessages,
+    required TResult orElse(),
+  }) {
+    if (refetchMessages != null) {
+      return refetchMessages(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RefetchMessages implements ConversationEvent {
+  const factory _RefetchMessages() = _$RefetchMessagesImpl;
+}
+
+/// @nodoc
 mixin _$ConversationState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<MessageBubbleModel> messages) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(ApiErrorModel apiErrorModel) error,
     required TResult Function(MessageBubbleModel message) newMessage,
   }) =>
       throw _privateConstructorUsedError;
@@ -518,7 +879,7 @@ mixin _$ConversationState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<MessageBubbleModel> messages)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(ApiErrorModel apiErrorModel)? error,
     TResult? Function(MessageBubbleModel message)? newMessage,
   }) =>
       throw _privateConstructorUsedError;
@@ -526,7 +887,7 @@ mixin _$ConversationState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<MessageBubbleModel> messages)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(ApiErrorModel apiErrorModel)? error,
     TResult Function(MessageBubbleModel message)? newMessage,
     required TResult orElse(),
   }) =>
@@ -616,7 +977,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<MessageBubbleModel> messages) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(ApiErrorModel apiErrorModel) error,
     required TResult Function(MessageBubbleModel message) newMessage,
   }) {
     return initial();
@@ -627,7 +988,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<MessageBubbleModel> messages)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(ApiErrorModel apiErrorModel)? error,
     TResult? Function(MessageBubbleModel message)? newMessage,
   }) {
     return initial?.call();
@@ -638,7 +999,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<MessageBubbleModel> messages)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(ApiErrorModel apiErrorModel)? error,
     TResult Function(MessageBubbleModel message)? newMessage,
     required TResult orElse(),
   }) {
@@ -763,7 +1124,7 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<MessageBubbleModel> messages) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(ApiErrorModel apiErrorModel) error,
     required TResult Function(MessageBubbleModel message) newMessage,
   }) {
     return loaded(messages);
@@ -774,7 +1135,7 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<MessageBubbleModel> messages)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(ApiErrorModel apiErrorModel)? error,
     TResult? Function(MessageBubbleModel message)? newMessage,
   }) {
     return loaded?.call(messages);
@@ -785,7 +1146,7 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<MessageBubbleModel> messages)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(ApiErrorModel apiErrorModel)? error,
     TResult Function(MessageBubbleModel message)? newMessage,
     required TResult orElse(),
   }) {
@@ -848,7 +1209,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message});
+  $Res call({ApiErrorModel apiErrorModel});
 }
 
 /// @nodoc
@@ -862,13 +1223,13 @@ class __$$ErrorImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? apiErrorModel = null,
   }) {
     return _then(_$ErrorImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
+      null == apiErrorModel
+          ? _value.apiErrorModel
+          : apiErrorModel // ignore: cast_nullable_to_non_nullable
+              as ApiErrorModel,
     ));
   }
 }
@@ -876,14 +1237,14 @@ class __$$ErrorImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ErrorImpl implements Error {
-  const _$ErrorImpl(this.message);
+  const _$ErrorImpl(this.apiErrorModel);
 
   @override
-  final String message;
+  final ApiErrorModel apiErrorModel;
 
   @override
   String toString() {
-    return 'ConversationState.error(message: $message)';
+    return 'ConversationState.error(apiErrorModel: $apiErrorModel)';
   }
 
   @override
@@ -891,11 +1252,12 @@ class _$ErrorImpl implements Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.apiErrorModel, apiErrorModel) ||
+                other.apiErrorModel == apiErrorModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, apiErrorModel);
 
   @JsonKey(ignore: true)
   @override
@@ -908,10 +1270,10 @@ class _$ErrorImpl implements Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<MessageBubbleModel> messages) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(ApiErrorModel apiErrorModel) error,
     required TResult Function(MessageBubbleModel message) newMessage,
   }) {
-    return error(message);
+    return error(apiErrorModel);
   }
 
   @override
@@ -919,10 +1281,10 @@ class _$ErrorImpl implements Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<MessageBubbleModel> messages)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(ApiErrorModel apiErrorModel)? error,
     TResult? Function(MessageBubbleModel message)? newMessage,
   }) {
-    return error?.call(message);
+    return error?.call(apiErrorModel);
   }
 
   @override
@@ -930,12 +1292,12 @@ class _$ErrorImpl implements Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<MessageBubbleModel> messages)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(ApiErrorModel apiErrorModel)? error,
     TResult Function(MessageBubbleModel message)? newMessage,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message);
+      return error(apiErrorModel);
     }
     return orElse();
   }
@@ -979,9 +1341,9 @@ class _$ErrorImpl implements Error {
 }
 
 abstract class Error implements ConversationState {
-  const factory Error(final String message) = _$ErrorImpl;
+  const factory Error(final ApiErrorModel apiErrorModel) = _$ErrorImpl;
 
-  String get message;
+  ApiErrorModel get apiErrorModel;
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1053,7 +1415,7 @@ class _$NewMessageImpl implements NewMessage {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<MessageBubbleModel> messages) loaded,
-    required TResult Function(String message) error,
+    required TResult Function(ApiErrorModel apiErrorModel) error,
     required TResult Function(MessageBubbleModel message) newMessage,
   }) {
     return newMessage(message);
@@ -1064,7 +1426,7 @@ class _$NewMessageImpl implements NewMessage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<MessageBubbleModel> messages)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function(ApiErrorModel apiErrorModel)? error,
     TResult? Function(MessageBubbleModel message)? newMessage,
   }) {
     return newMessage?.call(message);
@@ -1075,7 +1437,7 @@ class _$NewMessageImpl implements NewMessage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<MessageBubbleModel> messages)? loaded,
-    TResult Function(String message)? error,
+    TResult Function(ApiErrorModel apiErrorModel)? error,
     TResult Function(MessageBubbleModel message)? newMessage,
     required TResult orElse(),
   }) {

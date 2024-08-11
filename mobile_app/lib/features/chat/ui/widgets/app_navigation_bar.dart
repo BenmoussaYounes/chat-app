@@ -18,7 +18,9 @@ class AppNavigationBar extends StatelessWidget {
       ],
       onDestinationSelected: (pageIndex) {
         if (pageIndex == selectedIndex) return;
-        context.read<ChatBloc>().add(ChatEvent.changeSelectedPage(pageIndex));
+        context
+            .read<ChatBloc>()
+            .add(ChatEvent.changeSelectedPage(context, pageIndex));
       },
     );
   }

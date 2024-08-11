@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mobile_app/core/enums/user_enums.dart';
 
 import 'package:mobile_app/core/widgets/page_loading_indicator.dart';
+import 'package:mobile_app/features/chat/ui/widgets/error_occured.dart';
 import 'package:mobile_app/features/conversation/ui/widgets/empty_conversation_list.dart';
 
 import 'package:mobile_app/features/conversation/ui/widgets/message_bubble.dart';
@@ -46,6 +47,11 @@ class _ConversationScreenState extends State<ConversationScreen> {
             builder: (context, state) {
               return state.maybeWhen(
                 initial: () => const PageLoadingIndicator(),
+                error: (error) => ErrorOccurred(
+                    error,
+                    () => context
+                        .read<ConversationBloc>()
+                        .add(const ConversationEvent.refetchMessages())),
                 loaded: (messages) => messages.isNotEmpty
                     ? ListView.builder(
                         itemCount: messages.length,
