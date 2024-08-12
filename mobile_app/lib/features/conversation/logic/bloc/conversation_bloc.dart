@@ -7,9 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/enums/user_enums.dart';
-import '../../../../core/networking/api_error_model.dart';
-import '../../../../core/networking/api_response_snackbar.dart';
-import '../../../../core/networking/firebase_constants.dart';
+import '../../../../core/networking/networking.dart';
 import '../../data/models/message_bubble_model.dart';
 import '../../data/repositories/conversation_repository.dart';
 import '../../domain/params/conversation_params.dart';

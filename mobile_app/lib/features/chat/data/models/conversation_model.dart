@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'package:mobile_app/core/helpers/extensions.dart';
+
 import '../../../../core/enums/user_enums.dart';
 
 class ConversationModel {
@@ -17,16 +19,17 @@ class ConversationModel {
 
   factory ConversationModel.fromJson(
       Map<String, dynamic> json, User selectedUser) {
+    // TODO : refactor conversation model on server side to have only one unSeenMessagesCount
     int unSeenMessagesCount;
     String name;
     switch (selectedUser) {
       case User.younes:
         unSeenMessagesCount = json['aliUnSeenMessagesCount'];
-        name = 'Ali';
+        name = User.ali.value.toUpperCaseFirstLetter();
         break;
       case User.ali:
         unSeenMessagesCount = json['younesUnSeenMessagesCount'];
-        name = 'Younes';
+        name = User.younes.value.toUpperCaseFirstLetter();
         break;
     }
     return ConversationModel(

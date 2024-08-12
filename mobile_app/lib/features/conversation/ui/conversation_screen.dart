@@ -6,12 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/enums/user_enums.dart';
 import '../../../core/helpers/extensions.dart';
 import '../../../core/widgets/page_loading_indicator.dart';
-import '../../chat/ui/widgets/error_occured.dart';
+import '../../../core/widgets/error_occurred.dart';
 import '../logic/bloc/conversation_bloc.dart';
 
-import 'widgets/empty_conversation_list.dart';
-import 'widgets/message_bubble.dart';
-import 'widgets/send_new_message_input_field.dart';
+import 'widgets/widgets.dart';
 
 class ConversationScreen extends StatefulWidget {
   const ConversationScreen({super.key, required this.user});

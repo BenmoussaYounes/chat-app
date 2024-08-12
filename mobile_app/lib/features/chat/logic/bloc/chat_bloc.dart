@@ -9,11 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/enums/user_enums.dart';
 import '../../../../core/helpers/extensions.dart';
-import '../../../../core/networking/api_error_handler.dart';
-import '../../../../core/networking/api_error_model.dart';
-import '../../../../core/networking/api_response_snackbar.dart';
-import '../../../../core/networking/api_result.dart';
-import '../../../../core/networking/firebase_constants.dart';
+import '../../../../core/networking/networking.dart';
 import '../../../../core/routing/routes.dart';
 import '../../data/models/conversation_model.dart';
 import '../../data/repositories/chat_repository.dart';
@@ -111,12 +107,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     Emitter<ChatState> emit,
   ) async {
     emit(ChangeSelectedPageIndex(event.pageIndex));
-    switch (event.pageIndex) {
-      case 0:
-        selectedUser = User.younes;
-      case 1:
-        selectedUser = User.ali;
-    }
+    selectedUser = User.fromIndex(event.pageIndex);
     chatSubscription?.cancel();
     add(ChatEvent.getConversations(event.context));
   }

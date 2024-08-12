@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/helpers/spacing.dart';
-import '../../../../core/networking/api_error_model.dart';
+import '../helpers/spacing.dart';
+import '../networking/api_error_model.dart';
 
 class ErrorOccurred extends StatelessWidget {
   const ErrorOccurred(this.apiErrorModel, this.onRefetch, {super.key});
