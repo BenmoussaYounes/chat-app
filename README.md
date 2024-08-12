@@ -15,8 +15,7 @@
 
 ChatApp is a Flutter-based mobile application that allows two different users (in our case, Younes and Ali for simplicity) to create chat rooms and start chatting in them. The app includes real-time updates and many other features. Watch a demo of the app to see it in action.
 
-
-## 🪄 Features 
+## 🪄 Features
 
 - **Real-Time Messaging:** Enjoy seamless communication between users with bidirectional messaging, powered by Firebase Firestore for real-time data synchronization.
 
@@ -31,15 +30,14 @@ ChatApp is a Flutter-based mobile application that allows two different users (i
 - **Robust Error Handling:** Benefit from comprehensive error handling mechanisms, including error snackbar messages, an error screen, and the ability to refresh the page, ensuring a stable and reliable user experience.
 
 - **Optimized Performance:** Enjoy a high-performance app that is optimized for speed and efficiency, providing a smooth and responsive user experience at all times.
-  
+
 ## 📋 Technical Details
 
 ### Technology Stack for Mobile Application
 
 - **Dart**: The programming language used for developing the app, known for its performance and suitability for client-side development.
-  
 - **Flutter**: The UI toolkit used to build natively compiled applications for mobile, web, and desktop from a single codebase. Flutter allows for expressive and flexible UI design with fast development cycles.
-  
+
 <br/>
 
 ### Dependencies
@@ -107,14 +105,17 @@ To get a local copy up and running, follow these steps:
 git clone https://github.com/your-username/ChatApp.git
 cd ChatApp
 ```
+
 ### Install dependencies
 
 Run the following command in the project directory to install all necessary dependencies
+
 ```bash
 git clone https://github.com/your-username/ChatApp.git
 cd mobile_app
 ```
-### Set up Firebase ( Optional) 
+
+### Set up Firebase ( Optional)
 
 Case you want to run the app with your own firestore database you can do the following setup
 ( for a more details information, [link of the official documentation by firebase](https://firebase.google.com/docs/flutter/setup?platform=ios)
@@ -122,19 +123,24 @@ Case you want to run the app with your own firestore database you can do the fol
 1. Create a Firebase project in the Firebase Console.
 
 2. [install command line tools](https://firebase.google.com/docs/cli#setup_update_cli) ( to make installation easier we will use firebase cli tool)
-   
-4. Log into Firebase using your Google account by running the following command:
+3. Log into Firebase using your Google account by running the following command:
+
 ```bash
 firebase login
 ```
+
 5. Install the FlutterFire CLI by running the following command from any directory:
+
 ```bash
 dart pub global activate flutterfire_cli
 ```
-6. Configure your apps to use Firebase 
+
+6. Configure your apps to use Firebase
+
 ```bash
 flutterfire configure
 ```
+
 ### Run the app 🚀
 
 ```bash
@@ -148,14 +154,11 @@ fluter run
 
 - The project architecture is inspired by Clean Architecture. It is a customized version that adheres to the principle of separation of concerns by ensuring each feature is organized in its own folder. However, not all layers are used, particularly the domain layer. I also tailor the use of abstractions based on feature needs, adding more layers and using abstractions as required, following the principle of simplicity mentioned earlier.
 
--  Each feature is organized according to this structure. However, additional layers may be added depending on the specific needs of the feature.
-  
+- Each feature is organized according to this structure. However, additional layers may be added depending on the specific needs of the feature.
+
 <div align="center">
   <img src="https://github.com/user-attachments/assets/cc4a58f3-1b59-42fd-807b-b4fefa5efc70" height="250">
 </div>
-
-
-
 
 ## 💫 Challenges
 
