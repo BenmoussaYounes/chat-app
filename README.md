@@ -142,10 +142,14 @@ flutterfire configure
 ```bash
 # fetch dependencies
 flutter pub get
+# Android
 # To run development flavor ( both flavors result on the same app since we do not have a specific setup for production )
 flutter run --flavor development --target lib/main_development.dart --release
 # To run production flavor
 flutter run --flavor production --target lib/main_production.dart --release
+
+# iOS: Run the app without specifying flavors ( was not able to do ios setup cuz of the abssence of a macOS device at the moment)
+flutter run --target lib/main_production.dart --release
 ```
 
 ## 📏 Design Decisions
