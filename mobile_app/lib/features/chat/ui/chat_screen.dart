@@ -6,11 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../logic/bloc/chat_bloc.dart';
 
-import 'widgets/app_navigation_bar.dart';
-import 'widgets/chat_list_tile.dart';
-import 'widgets/chat_screen_loading_shimmer.dart';
-import 'widgets/empty_chat_list.dart';
-import 'widgets/error_occured.dart';
+import 'widgets/widgets.dart';
+import '../../../core/widgets/error_occurred.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});

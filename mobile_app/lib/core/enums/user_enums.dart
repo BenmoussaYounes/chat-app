@@ -15,4 +15,15 @@ enum User {
         throw Exception('Unknown user');
     }
   }
+
+  static User fromIndex(int index) {
+    switch (index) {
+      case 0:
+        return User.younes;
+      case 1:
+        return User.ali;
+      default:
+        throw Exception('Unknown user');
+    }
+  }
 }

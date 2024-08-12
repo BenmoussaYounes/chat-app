@@ -27,7 +27,7 @@ environment:
 # dependencies can be manually updated by changing the version numbers below to
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
-# ! dart run build_runner build --delete-conflicting-outputs
+# ! After each change related to a generated file run  dart run build_runner build --delete-conflicting-outputs
 dependencies:
   flutter:
     sdk: flutter
@@ -39,6 +39,8 @@ dependencies:
   google_fonts: ^6.2.1
   # A package for creating badges. Badges can be used for an additional marker for any widget, e.g. show a number of items in a shopping cart.
   badges: ^3.1.2
+  # Easy way to add shimmer effect
+  shimmer: ^3.0.0
   # State management
   flutter_bloc: ^8.1.6
   # To specify how we handle bloc events
@@ -52,21 +54,12 @@ dependencies:
   get_it: ^7.7.0
   # Classes and helper functions that support JSON code generation via the `json_serializable` package.
   json_annotation: ^4.9.0
-  # Networking
-  dio: ^5.5.0+1
-  retrofit: ^4.1.0
-  retrofit_generator: ^8.1.2
-  pretty_dio_logger: ^1.4.0
-  # for splash screen
-  flutter_native_splash: ^2.3.5
   # for adapting screen and font size.
   flutter_screenutil: ^5.9.3
   # Flutter plugin for Firebase Core, enabling connecting to multiple Firebase apps
   firebase_core: 2.31.1
   # Flutter plugin for Cloud Firestore, a cloud-hosted, noSQL database with live synchronization and offline support on Android and iOS.
   cloud_firestore: 4.17.4
-  # Easy way to add shimmer effect
-  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -76,6 +69,8 @@ dev_dependencies:
   build_runner: ^2.4.11
   # Automatically generate code for converting to and from JSON by annotating Dart classes
   json_serializable: ^6.8.0
+  # For testing
+  test: ^1.25.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
