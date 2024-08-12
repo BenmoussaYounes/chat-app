@@ -4,12 +4,12 @@
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Technical Details](#technical_details)
-- [Installation](#installation)
-- [Design decisions](#design_decisions)
-- [Challenges](#challenges)
+- Overview
+- Features
+- Technical Details
+- Installation
+- Design decisions
+- Challenges
 
 ## 📱 Overview
 
