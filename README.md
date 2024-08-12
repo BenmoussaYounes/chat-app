@@ -15,6 +15,7 @@
 
 ChatApp is a Flutter-based mobile application that allows two different users (in our case, Younes and Ali for simplicity) to create chat rooms and start chatting in them. The app includes real-time updates and many other features. Watch a demo of the app to see it in action.
 
+https://github.com/user-attachments/assets/430ecad6-1545-48bd-8f88-90ac1273cb37
 
 ## 🪄 Features 
 
@@ -39,7 +40,6 @@ ChatApp is a Flutter-based mobile application that allows two different users (i
 - **Dart**: The programming language used for developing the app, known for its performance and suitability for client-side development.
   
 - **Flutter**: The UI toolkit used to build natively compiled applications for mobile, web, and desktop from a single codebase. Flutter allows for expressive and flexible UI design with fast development cycles.
-  
 <br/>
 
 ### Dependencies
@@ -87,6 +87,8 @@ dev_dependencies:
   build_runner: ^2.4.11
   # Automatically generate code for converting to and from JSON by annotating Dart classes
   json_serializable: ^6.8.0
+  # For testing
+  test: ^1.25.2
 ```
 
 <br/>
@@ -112,7 +114,7 @@ cd ChatApp
 Run the following command in the project directory to install all necessary dependencies
 ```bash
 git clone https://github.com/your-username/ChatApp.git
-cd mobile_app
+cd chat-app/mobile_app
 ```
 ### Set up Firebase ( Optional) 
 
@@ -138,8 +140,12 @@ flutterfire configure
 ### Run the app 🚀
 
 ```bash
+# fetch dependencies
 flutter pub get
-fluter run
+# To run development flavor ( both flavors result on the same app since we do not have a specific setup for production )
+flutter run --flavor development --target lib/main_development.dart --release
+# To run production flavor
+flutter run --flavor production --target lib/main_production.dart --release
 ```
 
 ## 📏 Design Decisions
@@ -154,15 +160,16 @@ fluter run
   <img src="https://github.com/user-attachments/assets/cc4a58f3-1b59-42fd-807b-b4fefa5efc70" height="250">
 </div>
 
-
-
-
 ## 💫 Challenges
 
 - **Package Version Conflicts**: I encountered conflicts between package versions that prevented me from using all packages at their latest versions, such as `freezed`. I had to carefully select compatible versions to ensure all packages worked together seamlessly.
 
 - **Firebase Project Configuration**: While auto-configuring the app in the Firebase project, I faced an issue with the package ID. The ID `com.attraxia.chat_app` was valid for Android but not a valid bundle ID for iOS, which caused configuration problems 😅.
 
-- **Firestore Offline Data Handling**: I initially struggled with handling app no interenet connection case. I was manually managing offline case using the Flutter Connectivity package before realizing that Firestore automatically handles offline data persistence.
+- **Firestore Offline Data Handling**: I initially struggled with handling the app's offline case. I was manually managing this scenario using the Flutter Connectivity package before realizing that Firestore automatically handles offline data persistence.
 
 - **Firebase CLI Setup Issues**: Despite the Firebase CLI auto-generating configurations, I encountered unexpected behavior during the setup process. This resulted in installation issues and required troubleshooting to resolve.
+
+- **Lack of macOS for iOS Development**: I do not have access to a macOS computer at the moment, so I was unable to set up Flutter flavors for iOS or test the iOS app. As a result, I am uncertain if everything works correctly on iOS.
+
+- **Handling Firestore Timestamps**: When using `FieldValue.serverTimestamp()` in Firestore for the creation time of conversations and chats, I encountered a problem where the initial snapshot returned a null value. I had to handle this case to ensure the app functioned correctly.
